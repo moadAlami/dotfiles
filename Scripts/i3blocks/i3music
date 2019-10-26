@@ -12,8 +12,8 @@ case $BLOCK_BUTTON in
 	1) playerctl previous ;;
 	2) playerctl play-pause ;;
 	3) playerctl next ;;
-	4) playerctl position 5+ ;;
-	5) playerctl position 5- ;;
+	5) playerctl position 5+ ;;
+	4) playerctl position 5- ;;
 esac
 
 #Define song info variables
