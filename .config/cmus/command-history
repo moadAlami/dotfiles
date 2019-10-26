@@ -1,0 +1,40 @@
+q
+colorscheme gruvbox
+colorscheme dracula
+colorscheme gruvbox-alt
+colorscheme zenburn
+colorscheme xterm-white
+colorscheme solarized-light
+colorscheme solarized-dark
+colorscheme night
+colorscheme jellybeans
+colorscheme green-mono-88
+colorscheme green
+colorscheme gray-88
+colorscheme cyan
+colorscheme itunes-like
+update-cache 
+refresh
+q21
+refresh 
+pl-delete
+delete
+pl-rename 
+win-add-p Classical
+del
+6
+pl-create Classical
+pl-create 
+create
+playlist
+live-filter 
+ho
+shuffle 
+set mixer.alsa.device
+clear 
+help
+q!
+echo hello
+fset missing-tag=!stream&(artist=""|album=""|title=""|tracknumber=-1|date=-1)
+library
+add ~/Music/

@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+
+temp=$(curl wttr.in?format="%c%t" | sed "s/\+//")
+wind=$(curl wttr.in?format="%w" | sed "s/\ //")
+rainchance=$(curl wttr?format="%o")
+moon=$(curl wttr.in?format="%m%M")
+
+echo $temp $rainchance $wind $moon
+
+
+
+
+

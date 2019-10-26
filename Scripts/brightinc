@@ -1,0 +1,6 @@
+#!/bin/bash
+
+declare -i bright=$(cat /sys/class/backlight/intel_backlight/brightness)
+declare -i maxbright=5200
+
+echo $((bright+10*maxbright/100)) > /sys/class/backlight/intel_backlight/brightness
