@@ -2,7 +2,7 @@
 set $mod Mod4
 
 # Gaps
-gaps inner 5
+gaps inner 3
 gaps outer 1
 
 # Title bar
@@ -131,7 +131,6 @@ set $active-window  	 #7FB095
 
 # window colors
 #                       border              background         	text                 	indicator
-# client.focused          $urgent-bg-color    $bg-color          	$text-color          	#00ff00
 client.focused 			$active-window  	$active-window  	$active-window  		$active-window	
 client.unfocused        $inactive-bg-color 	$inactive-bg-color 	$inactive-text-color 	$inactive-bg-color
 client.focused_inactive $inactive-bg-color 	$inactive-bg-color 	$inactive-text-color 	$inactive-bg-color
@@ -165,8 +164,8 @@ exec_always feh --bg-scale '/home/moadalami/Pictures/wallpapers-master/Sunset by
 bindsym $mod+d exec rofi -show run
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%; exec pkill -RTMIN+10 i3blocks #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%; exec pkill -RTMIN+10 i3blocks #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga; exec pkill -RTMIN+10 i3blocks #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga; exec pkill -RTMIN+10 i3blocks #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec pkill -RTMIN+10 i3blocks  # mute sound
 
 # Sreen brightness controls
