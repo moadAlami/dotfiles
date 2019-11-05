@@ -191,10 +191,10 @@ bindsym $mod+Shift+o exec shutdown -h now
 # Compton 
 exec_always --no-startup-id pkill compton; compton
 
-# Window management
+# Window management (xprop to get class)
 for_window [class="Yad"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="discord"] move workspace $ws4
-for_window [class="Firefox"] move workspace $ws2
+for_window [class="firefox"] move workspace $ws2
 
 
