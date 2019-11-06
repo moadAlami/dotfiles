@@ -37,3 +37,5 @@ function path(){
     printf "%s\n" $PATH
     IFS=$old
 }
+
+eval $(thefuck --alias --enable-experimental-instant-mode)
