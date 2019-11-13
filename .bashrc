@@ -19,6 +19,7 @@ alias py3='/usr/bin/python3'
 alias py2='/usr/bin/python2'
 alias mixer='/usr/bin/pavucontrol'
 alias lyrics='/usr/local/bin/cmus-lyrics'
+alias mutt='/usr/bin/neomutt'
 
 
 export XDG_CURRENT_DESKTOP=KDE
@@ -38,4 +39,4 @@ function path(){
     IFS=$old
 }
 
-#eval $(thefuck --alias --enable-experimental-instant-mode)
+eval $(thefuck --alias)

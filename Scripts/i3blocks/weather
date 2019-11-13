@@ -1,5 +1,4 @@
-#!/usr/bin/bash
-
+#!/usr/bin/env sh
 
 temp=$(curl wttr.in?format="%c%t" | sed "s/\+//")
 wind=$(curl wttr.in?format="%w" | sed "s/\ //")

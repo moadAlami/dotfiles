@@ -2,8 +2,8 @@
 set $mod Mod4
 
 # Gaps
-gaps inner 3
-gaps outer 1
+gaps inner 5
+gaps outer 5
 
 # Title bar
 #
@@ -11,7 +11,7 @@ gaps outer 1
 for_window [class="^.*"] border pixel 2
 
 # Font (also used for the bar)	
-font pango:monospace 8 
+font pango:monospace 7
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -158,19 +158,19 @@ bar {
 bindsym $mod+shift+x exec i3lock
 
 # Wallpaper
-exec_always feh --bg-scale '/home/moadalami/Pictures/wallpapers-master/Sunset by the Pier.jpg'
-#
+exec_always feh --bg-scale '~/Pictures/wallpapers-master/Sunset by the Pier.jpg'
+
 # Rofi
 bindsym $mod+d exec rofi -show run
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga; exec pkill -RTMIN+10 i3blocks #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga; exec pkill -RTMIN+10 i3blocks #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec pkill -RTMIN+10 i3blocks  # mute sound
+bindsym XF86AudioRaiseVolume exec ~/Scripts/volume/inc_vol
+bindsym XF86AudioLowerVolume exec ~/Scripts/volume/dec_vol
+bindsym XF86AudioMute exec ~/Scripts/volume/toggle_vol
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec pkill -SIGRTMIN+9 i3blocks; exec /home/moadalami/Scripts/brightinc
-bindsym XF86MonBrightnessDown exec pkill -SIGRTMIN+9 i3blocks; exec /home/moadalami/Scripts/brightdec
+bindsym XF86MonBrightnessUp exec ~/Scripts/brightness/inc_bright
+bindsym XF86MonBrightnessDown exec ~/Scripts/brightness/dec_bright
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec ~/Scripts/i3blocks/toggletouchpad.sh # toggle touchpad
@@ -182,7 +182,7 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 bindsym $mod+Shift+m exec xrdb -merge ~/.Xresources
 
 # dmenu emoji
-bindsym $mod+Shift+e exec /home/moadalami/Scripts/dmenuemoji
+bindsym $mod+Shift+e exec ~/Scripts/dmenuemoji
 
 # Shutdown
 bindsym $mod+Shift+o exec shutdown -h now

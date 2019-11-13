@@ -1,0 +1,19 @@
+#!/bin/bash
+
+declare -i bright=$(cat /sys/class/backlight/intel_backlight/brightness)
+declare -i maxbright=5200
+
+declare -i actualbright=$(cat /sys/class/backlight/intel_backlight/actual_brightness)
+
+if [[ $actualbright -le $((maxbright/2)) ]]
+then icon=🔅
+else
+	icon=🔆
+fi
+
+
+pkill -RTMIN+9 i3blocks
+notify-send "$icon $(((actualbright*100/maxbright)-10))%" -h string:x-canonical-private-synchronous:anything
+
+echo $((bright-10*maxbright/100)) > /sys/class/backlight/intel_backlight/brightness
+

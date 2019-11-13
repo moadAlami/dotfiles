@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+
+declare -i vol=$(amixer | awk '/^  Front Left: Playback/ {print $5}' | sed 's/\[//;s/\]//;s/\%//')
+
+sp0=🔈
+sp1=🔉
+sp2=🔊
+spmute=🔇
+
+pactl set-sink-mute 0 toggle
+pkill
+
+toggle=$(amixer | awk '/^  Front Left: Playback/ {print $6}' | sed 's/\[//;s/\]//')
+
+if [[ "$toggle" == "on" ]]
+then
+	if [[ $vol -le 50 ]]
+	then
+		if [[ $vol -le 5 ]]
+		then
+			icon=$sp0
+		else
+			icon=$sp1
+		fi
+	else
+		icon=$sp2
+	fi
+else
+	icon=$spmute
+fi
+
+pactl set-sink-volume 0 -5%
+pkill -RTMIN+10 i3blocks
+notify-send "$icon $((vol))% [$toggle]" -h string:x-canonical-private-synchronous:anything
+

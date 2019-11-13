@@ -1,0 +1,12 @@
+#!/bin/env sh
+
+case $BLOCK_BUTTON in
+  1)notify-send ''"Top memory hogs:" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)";;
+esac
+
+used=$(free -h | awk '/^Mem:/ {print $3}' | sed 's/Gi//;s/Mi//')
+total=$(free -h | awk '/^Mem:/ {print $2}' | sed 's/Gi//')
+
+perc=$(echo "$used*100/$total"| bc)
+echo $perc%
+ 

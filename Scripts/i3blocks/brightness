@@ -1,5 +1,4 @@
-#!/usr/bin/bash
-
+#!/usr/bin/env sh
 
 declare -i bright=$(cat /sys/class/backlight/intel_backlight/brightness)
 declare -i maxbright=5200
@@ -18,6 +17,5 @@ then icon=🔅
 else
 	icon=🔆
 fi
-
 
 echo $icon$((actualbright*100/maxbright))%
