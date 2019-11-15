@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+alias vim="nvim" \
+	ran="ranger" \
+	py3="python3" \
+	py2="python2" \
+	mixer="pavucontrol" \
+	lyr="cmus-lyrics" \
+	mutt="neomutt" \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	YT="youtube-viewer" \
+	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
+	SS="sudo systemctl" \
+	p="sudo pacman"
+
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
+
+vf() { fzf | xargs -r -I % $EDITOR % ;}
