@@ -13,8 +13,10 @@ alias vim="nvim" \
 	YT="youtube-viewer" \
 	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
 	SS="sudo systemctl" \
-	p="sudo pacman"
+	p="sudo pacman -S"
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
+sc() { du -a ~/.config/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
+ss() { du -a ~/Scripts/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
 vf() { fzf | xargs -r -I % $EDITOR % ;}
