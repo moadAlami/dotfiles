@@ -10,10 +10,14 @@ alias vim="nvim" \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
+	yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'" \
+	yta="yt -x -f bestaudio/best" \
 	YT="youtube-viewer" \
 	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
 	SS="sudo systemctl" \
-	p="sudo pacman -S"
+	ps="sudo pacman -S" \
+	pq="sudo pacman -Q" \
+	pr="sudo pacman -R -n -u"
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
