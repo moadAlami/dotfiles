@@ -9,7 +9,7 @@ gaps outer 10
 for_window [class="^.*"] border pixel 2
 
 # Font (also used for the bar)	
-font pango:monospace 10
+font pango:monospace 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -53,7 +53,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
