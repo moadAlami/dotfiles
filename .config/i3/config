@@ -6,8 +6,6 @@ gaps inner 5
 gaps outer 5
 
 # Title bar
-#
-# new_window 1pixel
 for_window [class="^.*"] border pixel 2
 
 # Font (also used for the bar)	
@@ -158,7 +156,7 @@ bar {
 bindsym $mod+shift+x exec i3lock
 
 # Wallpaper
-exec_always feh --bg-scale '~/Pictures/wallpapers-master/Sunset by the Pier.jpg'
+exec_always feh --bg-scale '/home/moadalami/Pictures/wallpapers-master/Sunset by the Pier.jpg'
 
 # Rofi
 bindsym $mod+d exec rofi -show run
@@ -195,5 +193,4 @@ for_window [class="Yad"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="discord"] move workspace $ws4
 for_window [class="firefox"] move workspace $ws2
-
-
+for_window [class="Steam"] move workspace $ws5
