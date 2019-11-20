@@ -155,9 +155,6 @@ bar {
 # Lock screen
 bindsym $mod+shift+x exec i3lock
 
-# Wallpaper
-exec_always feh --bg-scale '/home/moadalami/Pictures/wallpapers-master/Sunset by the Pier.jpg'
-
 # Rofi
 bindsym $mod+d exec rofi -show run
 
@@ -165,6 +162,9 @@ bindsym $mod+d exec rofi -show run
 bindsym XF86AudioRaiseVolume exec ~/Scripts/volume/inc_vol
 bindsym XF86AudioLowerVolume exec ~/Scripts/volume/dec_vol
 bindsym XF86AudioMute exec ~/Scripts/volume/toggle_vol
+
+# Wallpaper
+bindsym $mod+p exec ~/Scripts/background
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec ~/Scripts/brightness/inc_bright

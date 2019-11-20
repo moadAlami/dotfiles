@@ -113,7 +113,7 @@ on_error = STOP
 row_limit = 1000
 
 # Skip intro on startup and goodbye on exit
-less_chatty = False
+less_chatty = True
 
 # Postgres prompt
 # \t - Current date and time
@@ -141,7 +141,7 @@ null_string = '<null>'
 enable_pager = True
 
 # Use keyring to automatically save and load password in a secure manner 
-keyring = True
+keyring = False
 
 # Custom colors for the completion menu, toolbar, etc.
 [colors]

@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+
+DISPLAY=:0 feh --bg-fill --no-fehbg --randomize -r $HOME/Pictures
+
