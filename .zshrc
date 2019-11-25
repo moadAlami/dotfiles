@@ -1,7 +1,10 @@
 # Enable colors and change prompt:
 autoload -U colors && colors
 
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}Hollow%{$fg[green]%}@%{$fg[blue]%}Soul %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+source  $HOME/github/zsh-git-prompt/zshrc.sh
+PROMPT='%B%{$fg[red]%}[%{$fg[yellow]%}Hollow%{$fg[green]%}@%{$fg[blue]%}Soul %{$fg[magenta]%}%~%{$fg[red]%}]%b$(git_super_status)%{$reset_color%}$%b '
+
 
 # History in cache directory:
 HISTSIZE=10000
@@ -20,8 +23,6 @@ setopt correct
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
-
-export PATH="$HOME/.torrench/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/moadalami/.local/bin"
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
