@@ -9,7 +9,7 @@ gaps outer 10
 for_window [class="^.*"] border pixel 2
 
 # Font (also used for the bar)	
-font pango:monospace 9
+font pango:monospace 10 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -163,6 +163,9 @@ bindsym XF86AudioRaiseVolume exec ~/Scripts/volume/inc_vol
 bindsym XF86AudioLowerVolume exec ~/Scripts/volume/dec_vol
 bindsym XF86AudioMute exec ~/Scripts/volume/toggle_vol
 
+# File manager
+bindsym $mod+o exec --no-startup-id kitty ranger
+
 # Wallpaper
 bindsym $mod+p exec ~/Scripts/background
 
@@ -189,6 +192,7 @@ bindsym $mod+Shift+o exec shutdown -h now
 exec_always --no-startup-id pkill compton; compton
 
 # Window management (xprop to get class)
+for_window [class="XClock"] floating enable
 for_window [class="Yad"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="discord"] move workspace $ws4
