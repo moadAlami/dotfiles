@@ -2,9 +2,9 @@
 
 [[ "$(acpi 2>&1)" = "" ]] && exit 33;
 
-state=$(acpi | awk -F [',:'] '{print $2}' | sed 's/\ //')
+state=$(acpi | awk -F "[',:']" '{print $2}' | sed 's/\ //')
 declare -i perc=$(acpi | awk -F [','] '{print $2}' | sed 's/\%//; s/\ //')
-time="("$(acpi | awk -F [':,'] '{print $4":"$5}' | sed 's/\ //')")"
+time="("$(acpi | awk -F "[':,']" '{print $4":"$5}' | sed 's/\ //')")"
 label=🔋
 
 if [[ "$state" == 'Discharging' ]]; then
