@@ -1,21 +1,18 @@
-#!/usr/bin/env sh
+#!/usr/bin/zsh
 
-declare -i bright=$(cat /sys/class/backlight/intel_backlight/brightness)
-declare -i maxbright=5200
-
+declare -i brightness=$(xbacklight)
 
 case $BLOCK_BUTTON in
-	1) echo 0 > /sys/class/backlight/intel_backlight/brightness ;;
-	4) echo $((bright+10*maxbright/100)) > /sys/class/backlight/intel_backlight/brightness ;;
-	5) echo $((bright-10*maxbright/100)) > /sys/class/backlight/intel_backlight/brightness ;;
+	# 1) echo 0 > /sys/class/backlight/intel_backlight/brightness ;;
+	1) xbacklight -set 0 -time 0 ;;
+	4) xbacklight -inc 10 -time 0 ;;
+	5) xbacklight -dec 10 -time 0 ;;
 esac
 
-declare -i actualbright=$(cat /sys/class/backlight/intel_backlight/actual_brightness)
-
-if [[ $actualbright -le $((maxbright/2)) ]]
+if [[ $brightness -le 50 ]]
 then icon=🔅
 else
 	icon=🔆
 fi
 
-echo $icon$((actualbright*100/maxbright))%
+echo $icon $brightness%

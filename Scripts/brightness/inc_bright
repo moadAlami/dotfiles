@@ -8,8 +8,6 @@ else
 	icon=🔆
 fi
 
+xbacklight -inc 10 -time 0
 pkill -RTMIN+9 i3blocks
 notify-send "$icon $brightness%" -h string:x-canonical-private-synchronous:anything
-
-xbacklight -inc 10
-
