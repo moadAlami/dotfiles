@@ -10,6 +10,6 @@ picom & # Transparency
 # Change ownership of the brightness file
 sudo chown moadalami /sys/class/backlight/intel_backlight/brightness &
 # Mount C drive
-sudo mount /dev/sda2 $HOME/Drives/C
+sudo mount /dev/sda2 $HOME/Drives/C -o umask=022
 # Mount D drive
-sudo mount /dev/sdb1 $HOME/Drives/D
+sudo mount /dev/sdb1 $HOME/Drives/D -o umask=022
