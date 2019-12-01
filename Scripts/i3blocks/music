@@ -4,10 +4,9 @@
 [[ "$(playerctl status 2>&1)" = "No players found" ]] && exit 33;
 
 # Define cursor icons
-playIcon="";
-pauseIcon="⏸️";
-stopIcon="⏹️";
-
+playIcon="<span color='#12de41'></span>";
+pauseIcon="<span color='orange'></span>";
+stopIcon="<span color='red'></span>";
 case $BLOCK_BUTTON in
 	1) playerctl previous && kill -9 $(cat $HOME/.cache/pid/cmus-lyrics) && pkill -SIGRTMIN+6 i3blocks ;;
 	2) playerctl play-pause && pkill -SIGRTMIN+6 ;;
@@ -31,13 +30,13 @@ songInfo="$songArtist - $songTitle";
 songDuration="";
 elapsedTime=$(playerctl metadata --format "{{ duration(position) }}");
 songLength=$(playerctl metadata --format "{{ duration(mpris:length) }}");
-songDuration="($elapsedTime/$songLength)";
+songDuration="[$elapsedTime/$songLength]";
 
 #Display output
 if [[ "${playerStatus^}" = "Paused" ]]; then
-	echo "$songInfo$songDuration$pauseIcon";
+	echo "$songInfo $songDuration $pauseIcon";
 elif [[ "${playerStatus^}" = "Playing" ]]; then
-	echo "$songInfo$songDuration$playIcon";
+	echo "$songInfo $songDuration $playIcon";
 elif [[ "${playerStatus^}" = "Stopped" ]]; then
-	echo "Stopped$stopIcon";
+	echo "Stopped $stopIcon";
 fi
