@@ -9,7 +9,7 @@ gaps outer 10
 for_window [class="^.*"] border pixel 2
 
 # Font (also used for the bar)	
-font pango:monospace 10 
+font pango:monospace 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -137,7 +137,6 @@ client.urgent 			$urgent-bg-color 	$urgent-bg-color 	$text-color 			$urgent-bg-c
 hide_edge_borders both #(Vertical / Horizontal split)
 
 bar {
-        #status_command i3status
   		status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
 			  colors {
 					  background $bg-color
