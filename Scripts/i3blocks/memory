@@ -12,5 +12,5 @@ if [[ "$unit" == "Mi" ]];then
 	used=$(echo "scale=3;$used/1000" | bc)
 fi
 
-perc=$(echo "scale=1;$used*100/$total"| bc)
+perc=$(echo "scale=1;$used*100/$total" | bc)
 echo $perc%

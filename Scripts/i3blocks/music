@@ -9,9 +9,9 @@ pauseIcon="⏸️";
 stopIcon="⏹️";
 
 case $BLOCK_BUTTON in
-	1) playerctl previous ;;
-	2) playerctl play-pause ;;
-	3) playerctl next ;;
+	1) playerctl previous && kill -9 $(cat $HOME/.cache/pid/cmus-lyrics) && pkill -SIGRTMIN+6 i3blocks ;;
+	2) playerctl play-pause && pkill -SIGRTMIN+6 ;;
+	3) playerctl next && kill -9 $(cat $HOME/.cache/pid/cmus-lyrics) && pkill -SIGRTMIN+6 i3blocks ;;
 	5) playerctl position 5+ ;;
 	4) playerctl position 5- ;;
 esac

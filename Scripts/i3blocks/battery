@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-[[ "$(acpi 2>&1)" = "" ]] && exit 33;
+[[ "$(acpi)" = "" ]] && exit 33;
 
 state=$(acpi | awk -F "[',:']" '{print $2}' | sed 's/\ //')
 declare -i perc=$(acpi | awk -F [','] '{print $2}' | sed 's/\%//; s/\ //')
@@ -17,7 +17,7 @@ if [[ "$state" == 'Discharging' ]]; then
 		bat='  '
 		notify-send -u critical "$bat$perc% Low battery\n$time"
 	elif [[ $perc -le 30 ]];then
-		color="FFAE00"
+		color="#FFAE00"
 		bat='  '
 	elif [[ $perc -le 50 ]];then
 		color="#FFF600"

@@ -29,5 +29,5 @@ fi
 
 pactl set-sink-volume 0 +5%
 pkill -RTMIN+10 i3blocks
-notify-send "$icon $((vol+5))% [$toggle]" -h string:x-canonical-private-synchronous:anything
+notify-send "$icon $(amixer | awk '/^  Front Left: Playback/ {print $5}' | sed 's/\[//;s/\]//;s/\%//')% [$toggle]" -h string:x-canonical-private-synchronous:anything
 

@@ -3,7 +3,6 @@
 declare -i brightness=$(xbacklight)
 
 case $BLOCK_BUTTON in
-	# 1) echo 0 > /sys/class/backlight/intel_backlight/brightness ;;
 	1) xbacklight -set 0 -time 0 ;;
 	4) xbacklight -inc 10 -time 0 ;;
 	5) xbacklight -dec 10 -time 0 ;;
@@ -15,4 +14,4 @@ else
 	icon=🔆
 fi
 
-echo $icon $brightness%
+echo $icon$brightness%

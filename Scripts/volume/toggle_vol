@@ -8,7 +8,6 @@ sp2=🔊
 spmute=🔇
 
 pactl set-sink-mute 0 toggle
-pkill
 
 toggle=$(amixer | awk '/^  Front Left: Playback/ {print $6}' | sed 's/\[//;s/\]//')
 
@@ -29,7 +28,6 @@ else
 	icon=$spmute
 fi
 
-pactl set-sink-volume 0 -5%
 pkill -RTMIN+10 i3blocks
 notify-send "$icon $((vol))% [$toggle]" -h string:x-canonical-private-synchronous:anything
 

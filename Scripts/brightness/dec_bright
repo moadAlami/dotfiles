@@ -9,5 +9,7 @@ else
 fi
 
 xbacklight -dec 10 -time 0
+
 pkill -RTMIN+9 i3blocks
-notify-send "$icon $brightness%" -h string:x-canonical-private-synchronous:anything
+
+notify-send "$icon $(xbacklight | awk -F "['.']" '{print $1}')%" -h string:x-canonical-private-synchronous:anything
