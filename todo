@@ -2,12 +2,13 @@
 - [ ] Separate repo for my blocklets
 - [ ] Add sound notification to the battery script
 - [ ] Merge langs into computer lang (CV)
-- [ ] Fix cmus-lyrics
+- [X] Fix cmus-lyrics
 - [ ] Pause music/video player when the headphones are unplugged + send PKILL signal
 - [ ] Merge date and time in i3blocks
 - [ ] Fix torrench
 - | ] Send torrench torrents to transmission
 - [X] Pick a random wallpaper
-- [ ] Enlarge the PepeBlind emote
+- [X] Enlarge the PepeBlind emote
 - [ ] Add Scripts to path
 - [ ] scrot package for screenshot
+- [ ] Patch surf
