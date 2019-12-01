@@ -15,9 +15,9 @@ alias vim="nvim" \
 	YT="youtube-viewer" \
 	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
 	SS="sudo systemctl" \
-	ps="sudo pacman -S" \
-	pq="sudo pacman -Q" \
-	pr="sudo pacman -R -n -u" 
+	PS="sudo pacman -S" \
+	PQ="sudo pacman -Q" \
+	PR="sudo pacman -R -n -u" 
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
