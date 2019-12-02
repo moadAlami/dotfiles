@@ -5,6 +5,9 @@ set $mod Mod4
 gaps inner 10
 gaps outer 10
 
+# Activate smart borders (always)
+smart_borders on
+
 # Title bar
 for_window [class="^.*"] border pixel 2
 
@@ -138,8 +141,9 @@ hide_edge_borders both #(Vertical / Horizontal split)
 
 bar {
   		status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+		i3bar_command i3bar -t
 			  colors {
-					  background $bg-color
+					  background #2f343f80
 						  separator #757575
 					  #                  border             background         text
 					  focused_workspace  $bg-color          $bg-color          $text-color
