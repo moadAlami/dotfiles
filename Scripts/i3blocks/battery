@@ -11,11 +11,11 @@ if [[ "$state" == 'Discharging' ]]; then
 	unset label
 	if [[ $perc -le 5 ]];then
 		echo "<span background='red'><b>Low battery</b></span>"
-		notify-send -u critical "$bat$perc% Low battery\n$time"
+		notify-send -u critical "$bat$perc% Low battery $time"
 	elif [[ $perc -le 15 ]];then
 		color="#FF0000"
 		bat='  '
-		notify-send -u critical "$bat$perc% Low battery\n$time"
+		notify-send -u critical "$bat$perc% Low battery $time"
 	elif [[ $perc -le 30 ]];then
 		color="#FFAE00"
 		bat='  '
