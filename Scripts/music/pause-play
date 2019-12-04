@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+playerctl play-pause && kill -9 $(cat $HOME/github/dwm-bar/dwmpid) && kill -9 $(cat ~/.cache/pid/cmus-lyrics)
