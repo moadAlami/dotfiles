@@ -2,4 +2,8 @@
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-exec i3
+# $HOME/github/dwm-bar/dwm-bar
+$HOME/.fehbg
+
+# exec i3
+exec dwm
