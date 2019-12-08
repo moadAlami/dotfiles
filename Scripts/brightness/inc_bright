@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-declare -i brightness=$(xbacklight)
+declare -i brightness=$(xbacklight -get)
 
 if [[ $brightness -le 50 ]]
 then icon=🔅
@@ -15,4 +15,4 @@ kill -9 $(cat $HOME/github/dwm-bar/dwmpid)
 # pkill -RTMIN+9 dwmblocks
 pkill -RTMIN+9 i3blocks
 
-notify-send "$icon $(xbacklight | awk -F "['.']" '{print $1}')%" -h string:x-canonical-private-synchronous:anything
+notify-send "$icon $(xbacklight -get)%" -h string:x-canonical-private-synchronous:anything
