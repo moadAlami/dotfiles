@@ -17,7 +17,13 @@ alias vim="nvim" \
 	SS="sudo systemctl" \
 	PS="sudo pacman -S" \
 	PQ="sudo pacman -Q" \
-	PR="sudo pacman -R -n -u" 
+	PR="sudo pacman -R -n -u" \
+	cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | head" \
+	mem="ps axch -o cmd:15,%mem --sort=-%cpu | head" \
+	gs="cd $HOME/Scripts" \
+	gi="cd $HOME/.config" \
+	gr="cd $HOME/github" \
+	gp="cd $HOME/Pictures"
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
