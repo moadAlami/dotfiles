@@ -28,7 +28,8 @@ alias vim="nvim" \
 	efb="nvim $HOME/.config/i3blocks/i3blocks.conf" \
 	efa="nvim $HOME/.config/aliasrc" \
 	efx="nvim $HOME/.zshrc" \
-	efz="nvim $HOME/.zshrc"
+	efz="nvim $HOME/.zshrc" \
+	efv="nvim $HOME/.config/nvim/init.vim"
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
