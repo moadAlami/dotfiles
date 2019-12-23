@@ -1,0 +1,42 @@
+#!/usr/bin/env sh
+
+#Exit the script if no music players running
+[[ "$(playerctl status 2>&1)" = "No players found" ]] && exit 33;
+
+# Define cursor icons
+playIcon="<span color='#12de41'></span>";
+pauseIcon="<span color='orange'></span>";
+stopIcon="<span color='red'></span>";
+case $BLOCK_BUTTON in
+	1) playerctl previous && kill -9 $(cat $HOME/.cache/pid/cmus-lyrics) && pkill -SIGRTMIN+6 i3blocks ;;
+	2) playerctl play-pause && pkill -SIGRTMIN+6 ;;
+	3) playerctl next && kill -9 $(cat $HOME/.cache/pid/cmus-lyrics) && pkill -SIGRTMIN+6 i3blocks ;;
+	5) playerctl position 5+ ;;
+	4) playerctl position 5- ;;
+esac
+
+#Define song info variables
+playerStatus=$(playerctl status);
+songArtist="$(playerctl metadata artist)";
+if [[ "$songArtist" == "Queen" ]];then
+	songArtist="👑Queen👑"
+fi
+fname=$(cmus-remote -Q | awk -v FS='/' '/^file/ {print $NF}' | sed "s/.mp3//
+																		s/\&/and/
+																		s/\[HD\]//")
+songArtist="${songArtist:-$fname}";
+songTitle=$(playerctl metadata title);
+songInfo="$songArtist - $songTitle";
+songDuration="";
+elapsedTime=$(playerctl metadata --format "{{ duration(position) }}");
+songLength=$(playerctl metadata --format "{{ duration(mpris:length) }}");
+songDuration="[$elapsedTime/$songLength]";
+
+#Display output
+if [[ "${playerStatus^}" = "Paused" ]]; then
+	echo "$songInfo $songDuration $pauseIcon";
+elif [[ "${playerStatus^}" = "Playing" ]]; then
+	echo "$songInfo $songDuration $playIcon";
+elif [[ "${playerStatus^}" = "Stopped" ]]; then
+	echo "Stopped $stopIcon";
+fi

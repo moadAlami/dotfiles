@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+cpuDBAR () {
+
+	warn=70
+	crit=90
+	therm=""
+	color="#FFFFFF"
+	  
+	declare -i temp=$(sensors acpitz-acpi-0 | awk -F "['+.']" '/^temp1/ {print $2}')
+
+	if [[ $temp -ge $warn ]];then
+		color="#FFFC00"
+		therm=""
+	elif [[ $temp -ge $crit ]];then
+		color="#FF0000"
+		therm=""
+	fi
+
+	echo "<span color='$color'>$therm $((temp))C°</span>"
+}
+
+cpuDBAR
