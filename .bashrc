@@ -39,4 +39,4 @@ function path(){
     IFS=$old
 }
 
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
