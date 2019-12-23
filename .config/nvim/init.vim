@@ -31,10 +31,15 @@ call plug#end()
 let g:NERDTreeUpdateOnCursorHold = 0
 let g:NERDTreeUpdateOnWrite      = 0
 
+set formatoptions=1
+set lbr
+
 " Transparency
 "hi Normal guibg=NONE ctermbg=NONE
 
 let g:lion_squeeze_spaces = 1
+" align with gl<character>
+
 
 " Set previewer
 let g:livepreview_previewer = 'zathura'
@@ -94,7 +99,7 @@ set sw=4
 	autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
 " Split line (opposite of 'join' <shift>j)
-	nnoremap <s-k> i<CR><Esc>
+	nnoremap <s-s> i<CR><Esc>
 
 
 " <++> Navigation
