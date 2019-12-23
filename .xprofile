@@ -5,6 +5,7 @@ sudo ntpd -qg
 # Make caps act as Escape and set the french layout
 setxkbmap -option caps:escape && setxkbmap -layout fr & # Set keyboard layout
 nm-applet &
+xrdb -merge $HOME/.Xresources
 dunst & # Notification 
 picom & # Transparency
 $HOME/github/dwm-bar/dwm-bar &
