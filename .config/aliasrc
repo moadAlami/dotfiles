@@ -26,12 +26,15 @@ alias vim="nvim" \
 	gp="cd $HOME/Pictures" \
 	gm="cd $HOME/Master/" \
 	gh="cd $HOME/" \
+	gt="cd $HOME/torrents" \
 	efi="nvim $HOME/.config/i3/config" \
 	efb="nvim $HOME/.config/i3blocks/i3blocks.conf" \
 	efa="nvim $HOME/.config/aliasrc" \
 	efx="nvim $HOME/.zshrc" \
 	efz="nvim $HOME/.zshrc" \
-	efn="nvim $HOME/.config/nvim/init.vim"
+	efn="nvim $HOME/.config/nvim/init.vim" \
+	tr="transmission-remote-cli"
+
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
