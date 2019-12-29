@@ -57,9 +57,13 @@ set tabstop=4
 set nopaste
 set sw=4
 
+
 " Spell check
 	map <F6> :setlocal spell! spelllang=fr_FR,es<CR>
 	map <F8> :setlocal spell! spelllang=en_US,es<CR>
+
+" correct spelling mistakes 
+	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=os
