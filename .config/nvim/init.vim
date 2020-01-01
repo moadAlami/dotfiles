@@ -6,49 +6,24 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'scrooloose/nerdtree'
 	Plug 'itchyny/lightline.vim'
 	Plug 'w0rp/ale'
-	Plug 'lervag/vimtex'
 	Plug 'tpope/vim-surround'
 	Plug 'jalvesaq/Nvim-R'
 	Plug 'chrisbra/csv.vim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
-	" Plug 'deoplete-plugins/deoplete-jedi' "Python completion
-	Plug 'vim-latex/vim-latex'
-	Plug 'rhysd/vim-grammarous' "Grammar checker
-	Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } "LaTeX Preview
-	Plug 'bluz71/vim-moonfly-colors'
-	Plug 'rakr/vim-one'
 	Plug 'tommcdo/vim-lion'
-	Plug 'morhetz/gruvbox'
-	Plug 'tomasr/molokai'
-	Plug 'wellle/targets.vim'
-	Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 	Plug 'tpope/vim-commentary'
 call plug#end()
 
-"colorscheme molokai
-
-let g:NERDTreeUpdateOnCursorHold = 0
-let g:NERDTreeUpdateOnWrite      = 0
+" Alignment aesthetics
+	let b:lion_squeeze_spaces = 1
 
 set formatoptions=1
 set lbr
 
-" Transparency
-"hi Normal guibg=NONE ctermbg=NONE
-
-let g:lion_squeeze_spaces = 1
 " align with gl<character>
+	let g:lion_squeeze_spaces = 1
 
-
-" Set previewer
-let g:livepreview_previewer = 'zathura'
-
-" Enable ncm2 for all buffers
-"	autocmd BufEnter * call ncm2#enable_for_buffer()
-
+syntax enable
 filetype plugin on
-set omnifunc=syntaxcomplete#Complete
 
 set number
 set relativenumber
@@ -57,6 +32,8 @@ set tabstop=4
 set nopaste
 set sw=4
 
+" Finding files
+	set path+=**
 
 " Spell check
 	map <F6> :setlocal spell! spelllang=fr_FR,es<CR>
@@ -66,7 +43,7 @@ set sw=4
 	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=os
+	autocmd FileType * set formatoptions-=cro
 
 "Enable autocompletion:
 	set wildmode=longest,list,full
@@ -75,21 +52,16 @@ set sw=4
 " Execute python scripts
 	map <F9> :exec 'w !python' <cr>
 
+" run the selected python lines (outputs in the same buffer)
+	map <C-space> :!python <cr>
 
 " Tabs
 	nnoremap <C-t> :tabnew <cr>
 	nnoremap <C-x> :tabclose <cr>
 	nnoremap <C-p> :tabprevious <cr>
-	inoremap <C-t> <Esc>:tabnew <cr>
-	inoremap <C-x> <Esc>:tabclose <cr>
-	inoremap <C-p> <Esc>:tabprevious <cr>
-
-" Buffers
-	map <C-h> :vsplit <cr>
 
 " Mode Coloring (using the (lightline) Plugin
 	set laststatus=2
-
 
 " NERDTreeToggle
 	map <C-o> :NERDTreeToggle<CR>
@@ -111,17 +83,15 @@ set sw=4
 	vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 	map <leader><leader> <Esc>/<++><Enter>"_c4l
 
-""""""""""""""""""""""""""""" 
-"== LaTeX =="
+set t_Co=256
+highlight Visual cterm=reverse ctermbg=NONE
 
-"""""""""""""""""""""""""""""
-
-" Latex Plugin Settings
-	let g:tex_flavor='latex'
-	let g:vimtex_view_method='zathura'
-	let g:vimtex_quickfix_mode=0
-	set conceallevel=1
-	let g:tex_conceal='abdmg'
+"  _         _____   __  __
+" | |    __ |_   _|__\ \/ /
+" | |   / _` || |/ _ \\  / 
+" | |__| (_| || |  __//  \ 
+" |_____\__,_||_|\___/_/\_\
+                         
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
@@ -170,10 +140,12 @@ set sw=4
 	autocmd FileType tex inoremap ,ct  \captionof{table}{}<Esc>i
 	autocmd FileType tex inoremap ,cf  \captionof{figure}{}<Esc>i
 	
-""""""""""""""""""""""""""""" 
-"== BibTeX =="
+"  ____  _ _   _____   __  __
+" | __ )(_) |_|_   _|__\ \/ /
+" |  _ \| | '_ \| |/ _ \\  / 
+" | |_) | | |_) | |  __//  \ 
+" |____/|_|_.__/|_|\___/_/\_\
 
-"""""""""""""""""""""""""""""
 	autocmd FileType bib inoremap <leader>ar @article{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>journal = "<++>",<Enter>volume = "<++>",<Enter>pages = "<++>",<Enter>year = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>09k0f{a
    	autocmd FileType bib inoremap <leader>bo @book{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>year = "<++>",<Enter>publisher = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>07k0f{a
    	autocmd FileType bib inoremap <leader>mi @misc{,<Esc>ohowpublished = "\url{<++>}",<Enter>author = "<++>",<Enter>title = "<++>",<Enter>month = "<++>",<Enter>year = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>08k0f{a                             
@@ -181,10 +153,12 @@ set sw=4
 	autocmd FileType bib inoremap <leader>ph @phdthesis{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>year = "<++>",<Enter>school = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>07kf{a
 
 
-"""""""""""""""""""""""""
-"== HTML ==
+"  _   _ _____ __  __ _
+" | | | |_   _|  \/  | |
+" | |_| | | | | |\/| | |
+" |  _  | | | | |  | | |___
+" |_| |_| |_| |_|  |_|_____|
 
-"""""""""""""""""""""""""
 	autocmd FileType html inoremap <b <b></b><Space><++><Esc>FbT>i
 	autocmd FileType html inoremap <em <em></em><Space><++><Esc>FeT>i
 	autocmd FileType html inoremap <leader>1 <h1></h1><Enter><Enter><++><Esc>2kf<i
@@ -204,17 +178,12 @@ set sw=4
 	autocmd FileType html inoremap <th <th></th><++><Esc>Fhcit
 	autocmd FileType html inoremap <tab <table><Enter></table><Esc>O<Paste>
 
-
-set t_Co=256
-highlight Visual cterm=reverse ctermbg=NONE
-
-"colorscheme murphy
-
-""""""""""""""""""""""""""""
-" == R == 
-""""""""""""""""""""""""""""
-let maplocalleader=','
-
+"  ____  
+" |  _ \ 
+" | |_) |
+" |  _ < 
+" |_| \_\
+       
 " Space line to send lines and selecion to R:
 	vmap <Space> <Plug>RDSendSelection
 	nmap <Space> <Plug>RDSendLine
