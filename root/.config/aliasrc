@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+alias vim="nvim" \
+	ran="ranger" \
+	py3="python3" \
+	py2="python2" \
+	mixer="pavucontrol" \
+	lyr="cmus-lyrics" \
+	mutt="neomutt" \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'" \
+	yta="yt -x -f bestaudio/best" \
+	YT="youtube-viewer" \
+	upc="pacman -Syu; pkill -RTMIN+8 i3blocks" \
+	SS="systemctl" \
+	PS="pacman -S" \
+	PQ="pacman -Q" \
+	PR="pacman -R -n -u" \
+	cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | head" \
+	mem="ps axch -o cmd:15,%mem --sort=-%mem | head" \
+	gi="cd $HOME/.config" \
+	gh="cd $HOME/" \
+	efa="nvim $HOME/.config/aliasrc" \
+	efz="nvim $HOME/.zshrc" \
+	efn="nvim $HOME/.config/nvim/init.vim" \
+
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
+
+cw() { feh --bg-fill --randomize -r $HOME/Pictures ;}
+sc() { du -a ~/.config/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
+ss() { du -a ~/Scripts/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
+vf() { fzf | xargs -r -I % $EDITOR % ;}
