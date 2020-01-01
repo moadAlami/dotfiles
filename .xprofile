@@ -5,12 +5,12 @@ sudo ntpd -qg
 # Make caps act as Escape and set the french layout
 setxkbmap -option caps:escape && setxkbmap -layout fr & # Set keyboard layout
 nm-applet &
+sudo chown moadalami /sys/class/backlight/intel_backlight/brightness &
+transmission-daemon &
 xrdb -merge $HOME/.Xresources
 dunst & # Notification 
 picom & # Transparency
 $HOME/github/dwm-bar/dwm-bar &
-# Change ownership of the brightness file
-sudo chown moadalami /sys/class/backlight/intel_backlight/brightness &
 # Mount C drive
 sudo mount /dev/sda2 $HOME/Drives/C -o umask=022
 # Mount D drive
