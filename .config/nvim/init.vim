@@ -1,11 +1,12 @@
 let mapleader=','
 call plug#begin('~/.local/share/nvim/plugged')
-	Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'deoplete-plugins/deoplete-jedi'
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+	Plug 'dense-analysis/ale'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'scrooloose/nerdtree'
 	Plug 'itchyny/lightline.vim'
-	Plug 'w0rp/ale'
 	Plug 'tpope/vim-surround'
 	Plug 'jalvesaq/Nvim-R'
 	Plug 'chrisbra/csv.vim'
@@ -38,6 +39,12 @@ set sw=4
 " Spell check
 	map <F6> :setlocal spell! spelllang=fr_FR,es<CR>
 	map <F8> :setlocal spell! spelllang=en_US,es<CR>
+
+" copy/cut and past from/to system clipboard
+	xnoremap <c-c> "+y
+	xnoremap <c-d> "+d
+	nnoremap cp "+p
+
 
 " correct spelling mistakes 
 	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
