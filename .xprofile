@@ -1,17 +1,14 @@
 #!/usr/bin/env sh
 
-# Time adjustment
-sudo ntpd -qg
 # Make caps act as Escape and set the french layout
 setxkbmap -option caps:escape && setxkbmap -layout fr & # Set keyboard layout
 nm-applet &
 sudo chown moadalami /sys/class/backlight/intel_backlight/brightness &
-transmission-daemon &
 xrdb -merge $HOME/.Xresources
 dunst & # Notification 
 picom & # Transparency
 $HOME/github/dwm-bar/dwm-bar &
 # Mount C drive
-sudo mount /dev/sda2 $HOME/Drives/C -o umask=022
+sudo mount /dev/sda2 $HOME/Drives/C -o dmask=022,fmask=133,rw
 # Mount D drive
-sudo mount /dev/sdb1 $HOME/Drives/D -o umask=022
+sudo mount /dev/sdb1 $HOME/Drives/D -o dmask=022,fmask=133,rw
