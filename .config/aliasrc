@@ -35,7 +35,9 @@ alias vim="nvim" \
 	efz="nvim $HOME/.zshrc" \
 	efn="nvim $HOME/.config/nvim/init.vim" \
 	tr="transmission-remote-cli" \
-	vpy37="source $HOME/.venv/python37/bin/activate"
+	vpy37="source $HOME/.venv/python37/bin/activate" \
+	list="nmcli device wifi list" \
+	con="nmcli device wifi connect -ask"
 
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
