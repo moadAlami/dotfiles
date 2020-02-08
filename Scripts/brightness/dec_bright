@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-declare -i brightness=$(xbacklight)
+declare -i brightness=$(xbacklight -get)
 
 if [[ $brightness -le 50 ]]
 then icon=🔅
