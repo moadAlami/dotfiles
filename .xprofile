@@ -9,7 +9,3 @@ xrdb -merge $HOME/.Xresources
 dunst & # Notification 
 picom & # Transparency
 $HOME/github/dwm-bar/dwm-bar &
-# Mount C drive
-sudo mount /dev/sda2 $HOME/Drives/C -o dmask=022,fmask=133,rw
-# Mount D drive
-sudo mount /dev/sdb1 $HOME/Drives/D -o dmask=022,fmask=133,rw
