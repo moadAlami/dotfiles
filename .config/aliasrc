@@ -4,7 +4,7 @@ alias vim="nvim" \
 	ran="ranger" \
 	py="python3" \
 	py2="python2" \
-	mixer="pavucontrol" \
+	mixer="alsamixer -g" \
 	lyr="cmus-lyrics" \
 	mutt="neomutt" \
 	ls="ls -hN --color=auto --group-directories-first" \
