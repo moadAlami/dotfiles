@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
-declare -i vol=$(amixer get Master | tail -n 1 | awk '{print $4}' | sed 's|\[||;s|\%||;s|\]||')
+declare -i vol=$(amixer | awk '/^  Front Left: Playback/ {print $5}' | sed 's/\[//;s/\]//;s/\%//')
 
 sp0=🔈
 sp1=🔉
 sp2=🔊
 spmute=🔇
 
-amixer sset Master toggle
+pactl set-sink-mute 0 toggle
 
 toggle=$(amixer get Master | tail -n 1 | awk '{print $6}' | sed 's/\[//;s/\]//')
 

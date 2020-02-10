@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
-declare -i vol=$(amixer get Master | tail -n 1 | awk '{print $4}' | sed 's|\[||;s|\%||;s|\]||')
+declare -i vol=$(amixer | awk '/^  Front Left: Playback/ {print $5}' | sed 's/\[//;s/\]//;s/\%//')
 
 sp0=🔈
 sp1=🔉
 sp2=🔊
 spmute=🔇
 
-toggle=$(amixer get Master | tail -n 1 | awk '{print $6}' | sed 's/\[//;s/\]//')
+toggle=$(amixer | awk '/^  Front Left: Playback/ {print $6}' | sed 's/\[//;s/\]//')
 
 if [[ "$toggle" == "on" ]]
 then
@@ -26,8 +26,8 @@ else
 	icon=$spmute
 fi
 
-amixer sset Master 5%-
+pactl set-sink-volume 0 -5%
 
 kill -9 $(cat $HOME/github/dwm-bar/dwmpid)
 
-notify-send "$icon $(amixer get Master | tail -n 1 | awk '{print $4}' | sed 's|\[||;s|\%||;s|\]||')% [$toggle]" -h string:x-canonical-private-synchronous:anything
+notify-send "$icon $(amixer | awk '/^  Front Left: Playback/ {print $5}' | sed 's/\[//;s/\]//;s/\%//')% [$toggle]" -h string:x-canonical-private-synchronous:anything
