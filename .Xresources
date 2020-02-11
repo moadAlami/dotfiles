@@ -37,8 +37,9 @@
 *.color7:   #acada1
 *.color15:  #cfd0c2
 
-! Font
+! == Font ==!
 *.font:			Mono:pixelsize=16:antialias=True:autohint:true;
+Xft.dpi:	96
 
 *.depth:		32
 
