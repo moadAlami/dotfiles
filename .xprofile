@@ -4,7 +4,7 @@
 feh --bg-fill --no-fehbg $HOME/Pictures/Arch.jpg
 setxkbmap -option caps:escape && setxkbmap -layout fr & # Set keyboard layout
 nm-applet &
-sudo chown mouad /sys/class/backlight/*backlight/brightness &
+sudo chown mouad /sys/class/backlight/*/brightness &
 xrdb -merge $HOME/.Xresources
 dunst & # Notification 
 picom & # Transparency
