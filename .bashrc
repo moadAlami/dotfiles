@@ -26,8 +26,6 @@ export XDG_CURRENT_DESKTOP=KDE
 
 shopt -s checkwinsize
 
-source <(kitty + complete setup bash)
-
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/moadalami/.local/bin"
 
 export KDE_SESSION_VERSION=5
