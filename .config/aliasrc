@@ -25,7 +25,9 @@ alias vim="nvim" \
 	gr="cd $HOME/github" \
 	gR="cd $HOME/data/College/PhD/ref" \
 	gp="cd $HOME/data/College/PhD" \
+	gP="cd $HOME/data/Personal" \
 	gm="cd $HOME/data/College/M.Sc" \
+	gM="cd $HOME/data/Personal/Music" \
 	gh="cd $HOME/" \
 	gt="cd $HOME/torrents" \
 	gd="cd $HOME/Downloads" \
@@ -38,6 +40,7 @@ alias vim="nvim" \
 	efn="nvim $HOME/.config/nvim/init.vim" \
 	TR="transmission-remote-cli" \
 	vpy37="source $HOME/.venv/python37/bin/activate" \
+	env="source $HOME/.venv/tensorflow/bin/activate" \
 	list="nmcli device wifi list" \
 	con="nmcli device wifi connect -ask"
 
