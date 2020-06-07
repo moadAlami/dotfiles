@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
-# Make caps act as Escape and set the french layout
-feh --bg-fill --no-fehbg $HOME/Pictures/Arch.jpg
+mpd & # Music Player Daemon
+feh --bg-fill --no-fehbg $HOME/Pictures/Arch.jpg # Wallpaper
 setxkbmap -option caps:escape && setxkbmap -layout fr & # Set keyboard layout
-nm-applet &
-sudo chown mouad /sys/class/backlight/*/brightness &
+sudo chown mouad /sys/class/backlight/*/brightness & # For the brightness module
 xrdb -merge $HOME/.Xresources
 dunst & # Notification 
 picom & # Transparency
-$HOME/github/dwm-bar/dwm-bar &
+mbsync gmail & # for the email module
+dwm-bar & # Status bar
