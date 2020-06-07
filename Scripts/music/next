@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-if [[ "$(cmus-remote -Q 2>&1)" = "cmus-remote: cmus is not running" ]];then 
-	playerctl next
-else
-	cmus-remote -n
-	kill -9 $(cat $HOME/github/dwm-bar/dwmpid)
-	kill -9 $(cat $HOME/.cache/pid/cmus-lyrics)
-fi
