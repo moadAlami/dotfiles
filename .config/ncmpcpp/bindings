@@ -1,22 +1,21 @@
 # conf filetype
 
 #def_key "mouse"
-
 #  mouse_event
-#
+
 def_key "k"
   scroll_up
-#
-#def_key "shift-up"
-#  select_item
-#  scroll_up
-#
+
+def_key "K"
+  select_item
+  scroll_up
+
 def_key "j"
   scroll_down
-#
-#def_key "shift-down"
-#  select_item
-#  scroll_down
+
+def_key "J"
+  select_item
+  scroll_down
 #
 #def_key "["
 #  scroll_up_album
@@ -36,8 +35,8 @@ def_key "j"
 #def_key "page_down"
 #  page_down
 #
-#def_key "home"
-#  move_home
+def_key "g"
+  move_home
 #
 def_key "G"
   move_end
