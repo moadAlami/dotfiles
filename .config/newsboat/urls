@@ -1,11 +1,20 @@
 https://lukesmith.xyz/rss.xml
-" "
+https://suckless.org/atom.xml
+https://git.suckless.org/st/atom.xml
+---------------
+---ARCHLINUX---
+---------------
+https://www.archlinux.org/feeds/news/ "Arch"
+https://www.archlinux.org/feeds/packages/ "Arch"
+-------------
 ---TWITTER---
+-------------
+https://nitter.net/DOTA2/rss "Twitter"
+https://nitter.net/drdisrespect/rss "Twitter"
 https://nitter.net/billburr/rss "Twitter"
 https://nitter.net/GuitarsWired/rss "Twitter"
 https://nitter.net/AdmiralBulldog/rss "Twitter"
 https://nitter.net/Arteezy/rss "Twitter"
-https://nitter.net/EvilGeniuses/rss "Twitter"
 https://nitter.net/SumaaaaiL/rss "Twitter"
 https://nitter.net/Cr1tdota/rss "Twitter"
 https://nitter.net/UniverseDota/rss "Twitter"
@@ -18,19 +27,27 @@ https://nitter.net/OG_BDN0tail/rss "Twitter"
 https://nitter.net/Ceb/rss "Twitter"
 https://nitter.net/iamJERAX/rss "Twitter"
 https://nitter.net/NigmaGh/rss "Twitter"
+https://nitter.net/SirActionSlacks/rss "Twitter"
+https://nitter.net/PurgeGamers/rss "Twitter"
 https://nitter.net/TeamCherryGames/rss "Twitter"
+https://nitter.net/griffinmatta/rss "Twitter"
 https://nitter.net/mossbag69/rss "Twitter"
-" "
+-------------
 ---PODCAST---
+-------------
+https://billburr.com/feed/ "Podcast"
 https://rss.art19.com/the-bill-bert-podcast "Podcast"
+http://feeds.megaphone.fm/2nondoctors "Podcast"
 https://notrelated.xyz/rss "Podcast"
-" "
+-------------
 ---YouTube---
+-------------
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0TgKURvvT1an-pLLJ2xFSg "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTIoOLzT1jbxAcPW99xn0zQ "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA "YouTube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCAp990eMLzmei84WNR4ptgA "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCTvH45HvnOzqXvfNJqdc3xg "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCy0-ftAwxMHzZc74OhYT3PA "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCObk_g1hQBy0RKKriVX_zOQ "YouTube"
@@ -39,6 +56,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCu6mSoMNzHQiBIOCkHUa2Aw "Yo
 https://www.youtube.com/feeds/videos.xml?channel_id=UCnrHEMsJVBRb2IQMLKkCz-A "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCJquYOG5EL82sKTfH9aMA9Q "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCWY3YZ9Sixh6CO-UPSY1nPw "YouTube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCC6_Q1Tbs-NHbp6MihxFcIg "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCrPUg54jUy1T_wII9jgdRbg "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC6nSFpj9HTCZ5t-N3Rm3-HA "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCL-Tm21Rft-u6EI18n0EN2w "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkf4VIqu3Acnfzuk3kRIFwA "YouTube"

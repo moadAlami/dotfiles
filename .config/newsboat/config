@@ -1,8 +1,6 @@
 # config file
 auto-reload yes
 
-# bindings
-# browser lynx
 browser firefox
 bind-key j down
 bind-key k up
@@ -10,11 +8,17 @@ bind-key G end
 bind-key g home
 bind-key l open
 bind-key h quit
+bind-key a toggle-article-read
+bind-key x delete-article
+bind-key D delete-all-articles
 
-macro v set browser "mpv %u" ; open-in-browser ; set browser "firefox %u"
+macro m set browser "mpv %u" ;
+macro w set browser "w3m %u" ;
+macro f set browser "firefox %u" ;
+macro i set browser "feh %u" ;
 
-# formatting and colorization ------------------------------------------
-
+download-path "~/data/Personal/newsboat/"
+player mpv
 
 color background default default
 color listnormal_unread default default
@@ -25,6 +29,7 @@ color info default black
 color article default default
 
 articlelist-format "%4i %f %D  %?T?|%-17T| ?%t"
+download-filename-format "%F-%t.%e"
 
 highlight feedlist    "^  *[0-9]+  *N  "                    color156 default
 highlight articlelist "^  *[0-9]+  *N  "                    color156 default
