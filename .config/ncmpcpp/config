@@ -2,6 +2,7 @@
 
 ncmpcpp_directory = ~/.config/ncmpcpp
 mpd_music_dir = ~/data/Personal/Music
+lyrics_directory = ~/.config/ncmpcpp/lyrics
 visualizer_type = spectrum
 
 ##### song format #####
@@ -237,7 +238,7 @@ follow_now_playing_lyrics = yes
 #
 fetch_lyrics_for_current_song_in_background = yes
 #
-store_lyrics_in_song_dir = yes
+store_lyrics_in_song_dir = no
 #
 #generate_win32_compatible_filenames = yes
 #
