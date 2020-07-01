@@ -1,17 +1,23 @@
-https://lukesmith.xyz/rss.xml
-https://suckless.org/atom.xml
-https://git.suckless.org/st/atom.xml
----------------
----ARCHLINUX---
----------------
-https://www.archlinux.org/feeds/news/ "Arch"
-https://www.archlinux.org/feeds/packages/ "Arch"
--------------
----TWITTER---
--------------
+"-----------------------| Remote Sensing & GIS"
+https://www.remotesensing.blog/blog-feed.xml "~Remote Sensing blog" "Remote Sensing & GIS"
+https://learnrsgis.com/feed/ "~Learn GIS" "Remote Sensing & GIS"
+"-----------------------| Geology"
+https://geotripper.blogspot.com/feeds/posts/default "Geology"
+https://geologie-maroc.blogspot.com/feeds/posts/default "Geology"
+"-----------------------| Tech"
+https://neomutt.org/feed.xml
+https://lukesmith.xyz/rss.xml "Tech"
+https://suckless.org/atom.xml "Tech"
+https://git.suckless.org/st/atom.xml "Tech"
+https://www.archlinux.org/feeds/news/ "Tech"
+https://www.archlinux.org/feeds/packages/ "Tech"
+"-----------------------| TWITTER"
 https://nitter.net/DOTA2/rss "Twitter"
+https://nitter.net/xQc/rss "Twitter"
+https://nitter.net/Asmongold/rss "Twitter"
 https://nitter.net/drdisrespect/rss "Twitter"
 https://nitter.net/billburr/rss "Twitter"
+https://nitter.net/TheMMphotoshop/rss "Twitter"
 https://nitter.net/GuitarsWired/rss "Twitter"
 https://nitter.net/AdmiralBulldog/rss "Twitter"
 https://nitter.net/Arteezy/rss "Twitter"
@@ -32,17 +38,15 @@ https://nitter.net/PurgeGamers/rss "Twitter"
 https://nitter.net/TeamCherryGames/rss "Twitter"
 https://nitter.net/griffinmatta/rss "Twitter"
 https://nitter.net/mossbag69/rss "Twitter"
--------------
----PODCAST---
--------------
+"-----------------------| PODCAST"
 https://billburr.com/feed/ "Podcast"
 https://rss.art19.com/the-bill-bert-podcast "Podcast"
 http://feeds.megaphone.fm/2nondoctors "Podcast"
 https://notrelated.xyz/rss "Podcast"
--------------
----YouTube---
--------------
+"-----------------------| YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCqMC_B1xdF2_lfqFe6vaMwg "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC0TgKURvvT1an-pLLJ2xFSg "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC4ihNhN8iN9QPg2XTxiiPJw "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCTIoOLzT1jbxAcPW99xn0zQ "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "YouTube"
@@ -56,7 +60,15 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCu6mSoMNzHQiBIOCkHUa2Aw "Yo
 https://www.youtube.com/feeds/videos.xml?channel_id=UCnrHEMsJVBRb2IQMLKkCz-A "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCJquYOG5EL82sKTfH9aMA9Q "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCWY3YZ9Sixh6CO-UPSY1nPw "YouTube"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCrPUg54jUy1T_wII9jgdRbg "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC6nSFpj9HTCZ5t-N3Rm3-HA "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCL-Tm21Rft-u6EI18n0EN2w "YouTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCkf4VIqu3Acnfzuk3kRIFwA "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCi2FacDgHVWDhASyjf7zt4Q "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCQeRaTukNYft1_6AZPACnog "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCmDTrq0LNgPodDOFZiSbsww "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCAzKFALPuF_EPe-AEI0WFFw "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTUO_3bYr50vmH0aE7byMjg "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCe2k8b_65Xd0q2nHK6S4kNQ "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCDjwdhrPW_MPEleDnPXOYTA "YouTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8R8FRt1KcPiR-rtAflXmeg "YouTube"
+
