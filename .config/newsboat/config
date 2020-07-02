@@ -9,8 +9,7 @@ bind-key g home
 bind-key l open
 bind-key h quit
 bind-key a toggle-article-read
-bind-key x delete-article
-bind-key D delete-all-articles
+bind-key D delete-article
 
 macro m set browser "mpv %u" ;
 macro w set browser "w3m %u" ;
