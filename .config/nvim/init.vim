@@ -9,10 +9,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'itchyny/lightline.vim'
 	Plug 'tpope/vim-surround'
 	Plug 'jalvesaq/Nvim-R'
-	Plug 'chrisbra/csv.vim'
 	Plug 'tommcdo/vim-lion'
 	Plug 'tpope/vim-commentary'
 call plug#end()
+
+" Prevent clipboard hijacking
+	inoremap  <C-r>+  <C-r><C-r>+
+	inoremap  <C-r>*  <C-r><C-r>*
 
 " Alignment aesthetics
 	let b:lion_squeeze_spaces = 1
@@ -22,6 +25,10 @@ set lbr
 
 " align with gl<character>
 	let g:lion_squeeze_spaces = 1
+
+" languagetool
+	map ,lf :!languagetool -l fr %<CR>
+	map ,le :!languagetool -l en %<CR>
 
 syntax enable
 filetype plugin on
@@ -110,11 +117,19 @@ highlight Visual cterm=reverse ctermbg=NONE
 	autocmd FileType tex map <leader>mgl :!makeglossaries %:r <c-r><CR><CR>
 " Biber
 	autocmd FileType tex map <leader>bib :!biber %:r <c-r><CR><CR>
+" BibTex
+	autocmd FileType tex map <leader>bt :!bibtex %:r <c-r><CR><CR>
 " Build only
 	autocmd FileType tex map <leader>bui :w! \| !pdflatex <c-r>%<CR>
 
 " Open the compiled .pdf
 	autocmd FileType tex map <leader>o :!zathura <c-r>%<Backspace><Backspace><Backspace>pdf & <CR><CR>
+
+" Textidote
+	autocmd FileType tex map ,tf :!textidote --check fr --output html % > report.html; firefox report.html <c-r><CR><CR>
+	autocmd FileType tex map ,te :!textidote --check en --output  html % > report.html; firefox report.html <c-r><CR><CR>
+	
+
 " Command Shortcuts
 	autocmd FileType tex inoremap ,it \textit{}<++><Esc>T{i
 	autocmd FileType tex inoremap ,bf \textbf{}<Esc>T{i
@@ -194,3 +209,10 @@ highlight Visual cterm=reverse ctermbg=NONE
 " Space line to send lines and selecion to R:
 	vmap <Space> <Plug>RDSendSelection
 	nmap <Space> <Plug>RDSendLine
+
+" kill and rerun dwm-bar
+	autocmd BufWritePost ~/github/dwm-bar/dwm-bar !killall -q dwm-bar; setsid dwm-bar &
+
+
+" kill and rerun dwmblocks
+	autocmd BufWritePost ~/dwmblocks/config.h !cd ~/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
