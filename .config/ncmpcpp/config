@@ -160,7 +160,8 @@ visualizer_type = spectrum
 ## Note: Custom command that will be executed each time song changes. Useful for
 ## notifications etc.
 ##
-execute_on_song_change = "kill /home/mouad/github/dwm-bar/dwmpid > /dev/null 2>&1"
+# execute_on_song_change = "kill /home/mouad/github/dwm-bar/dwmpid > /dev/null 2>&1"
+execute_on_song_change = notify-send "🎵$(mpc | head -n 1)" -h string:x-canonical-private-synchronous:anything
 execute_on_player_state_change = "kill /home/mouad/github/dwm-bar/dwmpid > /dev/null 2>&1"
 playlist_show_remaining_time = yes
 playlist_shorten_total_times = yes
