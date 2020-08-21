@@ -10,7 +10,7 @@ alias vim="nvim" \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
-	yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'" \
+	yt="youtube-dl --add-metadata -i -o '%(title)s.%(ext)s'" \
 	yta="yt -x -f bestaudio/best" \
 	YT="youtube-viewer" \
 	upc="sudo pacman -Syu" \
@@ -31,7 +31,8 @@ alias vim="nvim" \
 	gh="cd $HOME/" \
 	gt="cd $HOME/torrents" \
 	gd="cd $HOME/Downloads" \
-	gk="cd $HOME/data/Personal/keyboard" \
+	gk="cd $HOME/data/Personal/piano" \
+	gl="cd $HOME/data/Projects/landslides" \
 	efi="nvim $HOME/.config/i3/config" \
 	efb="nvim $HOME/.config/i3blocks/i3blocks.conf" \
 	efa="nvim $HOME/.config/aliasrc" \
@@ -42,7 +43,9 @@ alias vim="nvim" \
 	vpy37="source $HOME/.venv/python37/bin/activate" \
 	env="source $HOME/.venv/tensorflow/bin/activate" \
 	list="nmcli device wifi list" \
-	con="nmcli device wifi connect -ask"
+	con="nmcli device wifi connect -ask" \
+	P="aplaymidi -p 20" \
+	R="arecordmidi -p 20"
 
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
