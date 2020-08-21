@@ -10,11 +10,14 @@ bind-key l open
 bind-key h quit
 bind-key a toggle-article-read
 bind-key D delete-article
+bind-key x pb-delete
 
 macro m set browser "mpv %u" ;
 macro w set browser "w3m %u" ;
 macro f set browser "firefox %u" ;
 macro i set browser "feh %u" ;
+macro v set browser "youtube-dl --add-metadata -i -o '%(title)s.%(ext)s' %u" ;
+macro a set browser "youtube-dl --add-metadata -i -o '%(title)s.%(ext)s' -x -f bestaudio/best %u" ;
 
 download-path "~/data/Personal/newsboat/"
 player mpv
