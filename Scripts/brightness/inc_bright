@@ -11,7 +11,5 @@ fi
 xbacklight -inc 10 -time 0
 
 kill -9 $(cat $HOME/github/dwm-bar/dwmpid)
-# pkill -RTMIN+9 dwmblocks
-pkill -RTMIN+9 i3blocks
 
 notify-send "$icon $(xbacklight -get)%" -h string:x-canonical-private-synchronous:anything
