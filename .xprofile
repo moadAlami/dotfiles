@@ -4,8 +4,7 @@ mpd & # Music Player Daemon
 feh --bg-fill --no-fehbg $HOME/Pictures/Arch.jpg # Wallpaper
 setxkbmap -option caps:escape && setxkbmap -layout fr & # Set keyboard layout
 sudo chown mouad /sys/class/backlight/*/brightness & # For the brightness module
-xrdb -merge $HOME/.Xresources
 dunst & # Notification 
 picom & # Transparency
-mbsync gmail & # for the email module
+mailsync & # for the email module
 dwm-bar & # Status bar
