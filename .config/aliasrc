@@ -17,10 +17,10 @@ alias vim="nvim" \
 	SS="sudo systemctl" \
 	PS="sudo pacman -S" \
 	PQ="sudo pacman -Q" \
-	PR="sudo pacman -R -n -u" \
+	PR="sudo pacman -Rnu" \
 	cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | head" \
 	mem="ps axch -o cmd:15,%mem --sort=-%mem | head" \
-	gs="cd $HOME/Scripts" \
+	gs="cd $HOME/.local/bin" \
 	gi="cd $HOME/.config" \
 	gr="cd $HOME/github" \
 	gR="cd $HOME/data/College/PhD/ref" \
@@ -36,12 +36,11 @@ alias vim="nvim" \
 	efi="nvim $HOME/.config/i3/config" \
 	efb="nvim $HOME/.config/i3blocks/i3blocks.conf" \
 	efa="nvim $HOME/.config/aliasrc" \
-	efx="nvim $HOME/.zshrc" \
 	efz="nvim $HOME/.zshrc" \
 	efn="nvim $HOME/.config/nvim/init.vim" \
 	TR="transmission-remote-cli" \
-	vpy37="source $HOME/.venv/python37/bin/activate" \
-	env="source $HOME/.venv/tensorflow/bin/activate" \
+	tl="transmission-remote -l" \
+	env="source $HOME/.venv/py38/bin/activate" \
 	list="nmcli device wifi list" \
 	con="nmcli device wifi connect -ask" \
 	P="aplaymidi -p 20" \
