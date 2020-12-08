@@ -1,0 +1,305 @@
+#!/usr/bin/sh
+
+function bandwidth {
+	INLABEL=" ^c#1DDAD7^^d^ "
+	OUTLABEL="^c#1DDAD7^^d^ "
+
+	INTERFACE=$(ip route | awk '/^default/ { print $5 }'); #; exit }')
+
+	if ! [ -z "$INTERFACE" ];then
+
+		# Issue #36 compliant.
+		if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || \
+			(! [ "$TREAT_UNKNOWN_AS_UP" = "1" ] && 
+			! [ "`cat /sys/class/net/${INTERFACE}/operstate`" = "up" ])
+		then
+			echo " ^c#FF0000^^d^ "
+		fi
+
+		# path to store the old results in
+		path="/dev/shm/$(basename $0)-${INTERFACE}"
+
+		# grabbing data for each adapter.
+		read rx < "/sys/class/net/${INTERFACE}/statistics/rx_bytes"
+		read tx < "/sys/class/net/${INTERFACE}/statistics/tx_bytes"
+
+		# get time
+		time=$(date +%s)
+
+		# write current data if file does not exist. Do not exit, this will cause
+		# problems if this file is sourced instead of executed as another process.
+		if ! [[ -f "${path}" ]]; then
+		  echo "${time} ${rx} ${tx}" > "${path}"
+		  chmod 0666 "${path}"
+		fi
+
+
+		# read previous state and update data storage
+		read old < "${path}"
+		echo "${time} ${rx} ${tx}" > "${path}"
+
+		# parse old data and calc time passed
+		old=(${old//;/ })
+		time_diff=$(( $time - ${old[0]} ))
+
+		# sanity check: has a positive amount of time passed
+		[[ "${time_diff}" -gt 0 ]] || return #exit
+
+		# calc bytes transferred, and their rate in byte/s
+		rx_diff=$(( $rx - ${old[1]} ))
+		tx_diff=$(( $tx - ${old[2]} ))
+		rx_rate=$(( $rx_diff / $time_diff ))
+		tx_rate=$(( $tx_diff / $time_diff ))
+
+		# incoming
+		echo -n "$INLABEL"
+		rx_kib=$(( $rx_rate >> 10 ))
+		if hash bc 2>/dev/null && [[ "$rx_rate" -gt 1048576 ]]; then
+		  printf '%sM' "`echo "scale=1; $rx_kib / 1024" | bc`"
+		else
+		  echo -n "${rx_kib}K"
+		fi
+
+		echo -n " "
+
+		# outgoing
+		echo -n "$OUTLABEL"
+		tx_kib=$(( $tx_rate >> 10 ))
+		if hash bc 2>/dev/null && [[ "$tx_rate" -gt 1048576 ]]; then
+		  printf '%sM \n' "`echo "scale=1; $tx_kib / 1024" | bc`"
+		else
+		  echo "${tx_kib}K "
+		fi
+	else
+		echo " ^c#FF0000^^d^ "
+	fi
+}
+
+function battery {
+
+	if ! [[ "$(acpi)" = "" ]];then 
+		state=$(acpi | awk -F "[',:']" '{print $2}' | sed 's/\ //')
+		declare -i perc=$(acpi | awk -F "[',']" '{print $2}' | sed 's/\%//; s/\ //')
+		time="("$(acpi | awk -F "[':,']" '{print $4":"$5}' | sed 's/\ //')")"
+
+		if [[ "$state" == 'Discharging' ]];then
+			if [[ $perc -le 5 ]];then
+				bCase=1
+				notify-send -u critical "$perc% Low battery $time" -h string:x-canonical-private-synchronous:anything
+				systemctl suspend
+			elif [[ $perc -le 15 ]];then
+				color="#FF0000"
+				bat='  '
+				notify-send -u critical "$bat$perc% Low battery $time" -h string:x-canonical-private-synchronous:anything
+			elif [[ $perc -le 30 ]];then
+				color="#FFAE00"
+				bat='  '
+			elif [[ $perc -le 50 ]];then
+				color="#FFF600"
+				bat='  '
+			elif [[ $perc -le 75 ]];then
+				color="#A8FF00"
+				bat='  '
+			elif [[ $perc -le 100 ]];then
+				color="#A8FF00"
+				bat='  '
+			fi
+		elif [[ "$state" == 'Charging' ]];then
+			color="#FFFFFF"
+			bat='  '
+		elif [[ "$state" == "Unknown" ]];then
+			color="#FFFFFF"
+			bat='  '
+			bCase=2
+		elif [[ "$state" == "Full" ]];then
+			bCase=3
+			# notify-send -u critical "Battery Full"
+		fi
+
+		if [[ $bCase == 1 ]];then 
+			printf " ^c#FF0000^Low battery^d^ "
+		elif [[ $bCase == 2 ]];then
+			printf " ^c$color^$perc%%$bat^d^"
+		elif [[ $bCase == 3 ]];then
+			printf " ^c#FF0000^Battery full^d^ "
+		else 
+			printf " ^c$color^$perc%%$bat$time^d^ "
+		fi
+	else
+		printf " ^c#FF0000^^d^ "
+	fi
+}
+
+
+function brightness {
+	brightness=$(printf "%.0f" "$(xbacklight -get)")
+	printf " 💡 $brightness%% "
+}
+
+
+function cpu {
+	warn=70
+	crit=90
+	therm=""
+	color="#FFFFFF"
+	  
+	declare -i temp=$(sensors acpitz-acpi-0 | awk -F "['+.']" '/^temp1/ {print $2}')
+
+	if [[ $temp -ge $crit ]];then
+		color="#FF0000"
+		therm=""
+	elif [[ $temp -ge $warn ]];then
+		color="#FFFC00"
+		therm=""
+	fi
+
+	printf " ^c$color^$therm $temp°C^d^ "
+}
+
+function datetime {
+	printf " $(date '+%a %d %b %H:%M') "
+}
+
+
+function memory {
+	used=$(free -h | awk '/^Mem:/ {print $3}' | sed 's/Gi//;s/Mi//')
+	total=$(free -h | awk '/^Mem:/ {print $2}' | sed 's/Gi//')
+	unit=$(free -h | awk '/^Mem:/ {print $3}' | tr -d [:digit:][:punct])
+
+	if [[ "$unit" == "Mi" ]];then
+		used=$(echo "scale=3;$used/1000" | bc)
+	fi
+
+	perc=$(echo "scale=1;$used*100/$total" | bc)
+
+	if [[ 1 -eq "$(echo "$perc > 85" | bc)" ]];then
+		color="#FF0000"
+	elif [[ 1 -eq "$(echo "$perc > 70" | bc)" ]];then
+		color="#FFAE00"
+	elif [[ 1 -eq "$(echo "$perc > 50" | bc)" ]];then
+		color="#FFF600"
+	elif [[ 1 -eq "$(echo "$perc > 30" | bc)" ]];then
+		color="#A8FF00"
+	elif [[ 1 -eq "$(echo "$perc > 15" | bc)" ]];then
+		color="#A8FF00"
+	else
+		color="#FFFFFF"
+	fi
+
+	# printf " ^c$color^ $perc%%^d^ "
+	printf " 🗄 ^c$color^$perc%%^d^ "
+}
+
+function mpd {
+	if [[ "$(mpc | wc -l)" == 3 ]];then if mpc | grep playing >/dev/null;then
+			icon=''
+		else 
+			icon="⏸ "
+		fi
+
+		echo " $(ncmpcpp -q --current-song='{{%a - }%t}|{%f}') $icon"
+	fi
+}
+	
+function network {
+	[ "$(cat /sys/class/net/w*/operstate)" = 'down' ] && wifiicon="^c#FF0000^^d^"
+
+	[ ! -n "${wifiicon+var}" ] && wifiicon=$(grep "^\s*w" /proc/net/wireless | awk '{ print "^c#00FF00^^d^", int($3 * 100 / 70) "%" }')
+
+	wiredicon=$(cat /sys/class/net/e*/operstate | sed "s/down/^c#FF0000^^d^/;s/up/^c#00FF00^^d^/") 
+	 
+	if [[ "$wifiicon" = '^c#FF0000^^d^' ]];then 
+		echo " $wifiicon $wiredicon "
+	else
+		echo " $wifiicon "
+	fi
+}
+
+
+function numlock {
+	state=$(xset -q | grep -F "Num Lock" | awk '{print $8}')
+
+	if [[ "$state" == "on" ]];then
+		color="#00FF00"
+	elif [[ "$state" == "off" ]];then
+		color="#222222"
+	fi
+
+	printf " ^c$color^^d^ "
+
+}
+
+function torrent {
+
+	if ! [[ "$(ps -axch | grep transmission-da)" = "" ]];then
+		color="#00FF00"
+	else
+		color="#FF0000"
+	fi
+
+	transmission-remote -l | grep % |
+		sed " # This first sed command is to ensure a desirable order with sort
+			s/.*Stopped.*/A/g;
+			s/.*Seeding.*/Z/g;
+			s/.*100%.*/N/g;
+			s/.*Idle.*/B/g;
+			s/.*Uploading.*/L/g;
+			s/.*%.*/M/g" |
+				sort -h | uniq -c | sed " # Now we replace the standin letters with icons.
+							s/A/^c#FF0000^⏹^d^/g;
+							s/B/^c#ffa500^⧗^d^/g;
+							s/L/^c#1DDAD7^^d^/g;
+							s/M/^c#1DDAD7^^d^/g;
+							s/N/^c#00FF00^✔^d^/g;
+							s/Z/^c#00FF00^🙐^d^/g" | awk '{print $2, $1}' | sed -e "s/ $//g" | tr '\n' ' '
+							if [[ "$(transmission-remote -l | grep Sum | awk '{print $2}')" -eq "None" ]];then
+								printf " ^c$color^⓿ ^d^ "
+							fi
+}
+
+
+function volume {
+	sp0=🔈
+	sp1=🔉
+	sp2=🔊
+	spmute=🔇 
+
+	toggle=$(amixer | awk '/^  Front Left: Playback/ {print $6}' | sed 's/\[//;s/\]//')
+	declare -i vol=$(amixer | awk '/^  Front Left: Playback/ {print $5}' | sed 's/\[//;s/\]//;s/\%//')
+
+	if [[ $vol -le 50 ]]
+	then
+		if [[ $vol -le 5 ]]
+		then
+			icon=$sp0
+		else
+			icon=$sp1
+		fi
+	else
+		icon=$sp2
+	fi
+
+	if [[ "$toggle" == "on" ]];then
+		printf " $icon $vol%% "
+	else
+		echo " $spmute $vol% "
+	fi
+}
+
+function email {
+	declare -i new=$(du -a ~/.local/share/mail/*/INBOX/new/* 2>/dev/null | sed -n '$=')
+	if [[ "$new" == 0 ]];then
+		printf " 📭 "
+	else
+		printf " $new 📬 "
+	fi
+}
+delim="/"
+
+while true;do
+	xsetroot -name "$(mpd)$delim$(bandwidth)$delim$(memory)$delim$(brightness)$delim$(email)$delim$(volume)$delim$(cpu)$delim$(battery)$delim$(datetime)$delim$(numlock)" 2> ~/.config/dwm-bar.log
+		sleep 1 &
+		echo $! > $HOME/github/dwm-bar/dwmpid
+		wait $!
+	done
+
