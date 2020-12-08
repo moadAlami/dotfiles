@@ -1,4 +1,0 @@
-#!/usr/bin/sh
-
-feh --bg-fill --randomize -r $HOME/Pictures
-
