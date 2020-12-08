@@ -5,4 +5,6 @@
 $HOME/.fehbg
 
 # exec i3
-exec dwm
+while true; do
+	dwm 2> ~/.config/dwm.log
+done
