@@ -11,11 +11,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'jalvesaq/Nvim-R'
 	Plug 'tommcdo/vim-lion'
 	Plug 'tpope/vim-commentary'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 " Prevent clipboard hijacking
 	inoremap  <C-r>+  <C-r><C-r>+
 	inoremap  <C-r>*  <C-r><C-r>*
+
+
+" Markdownn viewer
+let g:mkdp_auto_start = 0
 
 " Alignment aesthetics
 	let b:lion_squeeze_spaces = 1
@@ -44,8 +49,8 @@ set sw=4
 	set path+=**
 
 " Spell check
-	map <F6> :setlocal spell! spelllang=fr_FR,es<CR>
-	map <F8> :setlocal spell! spelllang=en_US,es<CR>
+	map <F6> :setlocal spell! spelllang=fr_fr<CR>
+	map <F8> :setlocal spell! spelllang=en_us<CR>
 
 " copy/cut and past from/to system clipboard
 	xnoremap <c-c> "+y
