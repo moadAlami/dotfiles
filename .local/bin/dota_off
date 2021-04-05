@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+xinput set-prop "ASUS ROG STRIX IMPACT" "libinput Accel Speed" -1
+xmodmap -e 'keycode 66 = Escape'
