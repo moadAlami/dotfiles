@@ -5,7 +5,6 @@ alias vim="nvim" \
 	py="python3" \
 	py2="python2" \
 	mixer="alsamixer -g" \
-	lyr="cmus-lyrics" \
 	mutt="neomutt" \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
@@ -23,30 +22,28 @@ alias vim="nvim" \
 	gs="cd $HOME/.local/bin" \
 	gi="cd $HOME/.config" \
 	gr="cd $HOME/github" \
-	gR="cd $HOME/data/College/PhD/ref" \
-	gp="cd $HOME/data/College/PhD" \
-	gP="cd $HOME/data/Personal" \
-	gm="cd $HOME/data/College/M.Sc" \
-	gM="cd $HOME/data/Personal/Music" \
+	gR="cd $HOME/SSD/College/PhD/ref" \
+	gp="cd $HOME/SSD/College/PhD" \
+	gP="cd $HOME/external/personal" \
+	gm="cd $HOME/SSD/College/M.Sc" \
+	gM="cd $HOME/data/Music" \
 	gh="cd $HOME/" \
-	gt="cd $HOME/data/Personal/torrents" \
+	gt="cd $HOME/external/personal/torrents" \
 	gd="cd $HOME/Downloads" \
-	gk="cd $HOME/data/Personal/piano" \
-	gl="cd $HOME/data/Projects/landslides" \
-	efi="nvim $HOME/.config/i3/config" \
-	efb="nvim $HOME/.config/i3blocks/i3blocks.conf" \
+	gk="cd $HOME/external/personal/piano" \
+	gl="cd $HOME/SSD/projects/OT" \
 	efa="nvim $HOME/.config/aliasrc" \
 	efz="nvim $HOME/.zshrc" \
 	efn="nvim $HOME/.config/nvim/init.vim" \
 	TR="tremc" \
 	TA="transadd"\
 	tl="transmission-remote -l" \
-	env="source $HOME/.venv/py38/bin/activate" \
-	tf="source $HOME/.venv/tf/bin/activate" \
+	env="source $HOME/.venv/p39/bin/activate" \
+	tf="source $HOME/.venv/p38/bin/activate" \
 	list="nmcli device wifi list" \
 	con="nmcli device wifi connect -ask" \
-	P="aplaymidi -p 20" \
-	R="arecordmidi -p 20"
+	P="aplaymidi -p 24" \
+	R="arecordmidi -p 24"
 
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
