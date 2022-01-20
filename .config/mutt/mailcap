@@ -1,0 +1,15 @@
+# Mailcap
+
+audio/*; mpv %s
+image/*; feh %s
+
+application/msword; /user/bin/xdg-open %s
+application/pdf; zathura %s
+application/postscript; /usr/bin/xdg-open %s
+
+text/html; /usr/bin/elinks %s ; copiousoutput
+
+application/ics; /usr/bin/calcurse -i %s && notify-send "Entry added to calendar 📅"
+text/calendar; /usr/bin/calcurse -i %s && notify-send "Entry added to calendar 📅"
+
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; /usr/bin/libreoffice %s
