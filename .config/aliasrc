@@ -4,14 +4,14 @@ alias vim="nvim" \
 	ran="ranger" \
 	py="python3" \
 	py2="python2" \
-	mixer="alsamixer -g" \
+	mixer="ncpamixer" \
 	mutt="neomutt" \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	yt="youtube-dl --add-metadata -i -o '%(title)s.%(ext)s'" \
-	yta="yt -x -f bestaudio/best" \
-	YT="youtube-viewer" \
+	yta="yt -x -f bestaudio/best --audio-format opus --audio-quality 0" \
+	YT="ytfzf -t" \
 	upc="sudo pacman -Syu" \
 	SS="sudo systemctl" \
 	PS="sudo pacman -S" \
@@ -43,7 +43,8 @@ alias vim="nvim" \
 	list="nmcli device wifi list" \
 	con="nmcli device wifi connect -ask" \
 	P="aplaymidi -p 24" \
-	R="arecordmidi -p 24"
+	R="arecordmidi -p 24" \
+	ot="opustags -ei "
 
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
