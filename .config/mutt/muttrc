@@ -1,0 +1,5 @@
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+
+set mailcap_path 	= ~/.config/mutt/mailcap
+
