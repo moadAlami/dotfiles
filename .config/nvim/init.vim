@@ -76,7 +76,7 @@ set sw=4
 
 " Tabs
 	nnoremap <C-t> :tabnew <cr>
-	nnoremap <C-x> :tabclose <cr>
+	" nnoremap <C-x> :tabclose <cr>
 	nnoremap <C-p> :tabprevious <cr>
 
 " Mode Coloring (using the (lightline) Plugin
@@ -125,7 +125,8 @@ highlight Visual cterm=reverse ctermbg=NONE
 " BibTex
 	autocmd FileType tex map <leader>bt :!bibtex %:r <c-r><CR><CR>
 " Build only
-	autocmd FileType tex map <leader>bui :w! \| !pdflatex <c-r>%<CR>
+	autocmd FileType tex map <leader>bui :w! \| !lualatex <c-r>%<CR>
+	" autocmd FileType tex map <leader>bui :w! \| !pdflatex <c-r>%<CR>
 
 " Open the compiled .pdf
 	autocmd FileType tex map <leader>o :!zathura <c-r>%<Backspace><Backspace><Backspace>pdf & <CR><CR>
@@ -137,6 +138,8 @@ highlight Visual cterm=reverse ctermbg=NONE
 
 " Command Shortcuts
 	autocmd FileType tex inoremap ,it \textit{}<++><Esc>T{i
+	autocmd FileType tex inoremap ,tt \texttt{}<++><Esc>T{i
+	autocmd FileType tex inoremap ,sc \textsc{}<++><Esc>T{i
 	autocmd FileType tex inoremap ,bf \textbf{}<Esc>T{i
 	autocmd FileType tex inoremap ,under \underline{}<++><Esc>T{i
 	autocmd FileType tex inoremap ,em \emph{}<++><Esc>T{i
