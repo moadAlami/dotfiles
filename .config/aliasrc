@@ -31,15 +31,15 @@ alias vim="nvim" \
 	gt="cd $HOME/external/personal/torrents" \
 	gd="cd $HOME/Downloads" \
 	gk="cd $HOME/external/personal/piano" \
-	gl="cd $HOME/SSD/projects/agriculture-digitale" \
+	gl="cd $HOME/SSD/projects/PAD" \
 	efa="nvim $HOME/.config/aliasrc" \
 	efz="nvim $HOME/.zshrc" \
 	efn="nvim $HOME/.config/nvim/init.vim" \
 	TR="tremc" \
 	TA="transadd"\
 	tl="transmission-remote -l" \
-	env="source $HOME/.venv/p39/bin/activate" \
-	tf="source $HOME/.venv/p38/bin/activate" \
+	env="source $HOME/.venv/current/bin/activate" \
+	tf="source $HOME/.venv/p39/bin/activate" \
 	list="nmcli device wifi list" \
 	con="nmcli device wifi connect -ask" \
 	P="aplaymidi -p 24" \
@@ -50,6 +50,6 @@ alias vim="nvim" \
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
 cw() { feh --bg-fill --randomize -r $HOME/Pictures ;}
-sc() { du -a ~/.config/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
+# sc() { du -a ~/.config/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
 ss() { du -a ~/.local/bin/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
 vf() { fzf | xargs -r -I % $EDITOR % ;}
