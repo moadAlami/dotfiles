@@ -3,8 +3,8 @@ autoload -U colors && colors
 
 
 source  /home/mouad/github/zsh-git-prompt/zshrc.sh
-PROMPT='%B%{$fg[red]%}[%{$fg[yellow]%}Hollow%{$fg[green]%}@%{$fg[blue]%}Soul %{$fg[magenta]%}%~%{$fg[red]%}]%b$(git_super_status)%{$reset_color%}$%b '
-# PROMPT='%B%{$fg[red]%}[% %{$fg[magenta]%}%~%{$fg[red]%}]%b$(git_super_status)%{$reset_color%}$%b '
+# PROMPT='%B%{$fg[red]%}[%{$fg[yellow]%}Hollow%{$fg[green]%}@%{$fg[blue]%}Soul %{$fg[magenta]%}%~%{$fg[red]%}]%b$(git_super_status)%{$reset_color%}$%b '
+PROMPT='%B%{$fg[red]%}[% %{$fg[magenta]%}%~%{$fg[red]%}]%b$(git_super_status)%{$reset_color%}$%b '
 
 
 # History in cache directory:
