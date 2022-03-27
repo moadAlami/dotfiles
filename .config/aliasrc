@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 alias vim="nvim" \
+	lf="lfub" \
 	ran="ranger" \
 	py="python3" \
 	py2="python2" \
@@ -35,6 +36,7 @@ alias vim="nvim" \
 	efa="nvim $HOME/.config/aliasrc" \
 	efz="nvim $HOME/.zshrc" \
 	efn="nvim $HOME/.config/nvim/init.vim" \
+	efb="nvim $HOME/.config/bookmarks" \
 	TR="tremc" \
 	TA="transadd"\
 	tl="transmission-remote -l" \
@@ -44,8 +46,7 @@ alias vim="nvim" \
 	con="nmcli device wifi connect -ask" \
 	P="aplaymidi -p 24" \
 	R="arecordmidi -p 24" \
-	ot="opustags -ei "
-
+	ot="opustags -ei " \
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
