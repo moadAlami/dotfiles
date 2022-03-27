@@ -53,22 +53,18 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# Use ranger to switch directories and bind it to ctrl-o
-rancd () {
+# Use lf to switch directories and bind it to ctrl-o
+lfcd () {
     tmp="$(mktemp)"
-    ranger --choosedir="$tmp" "$@"
+    lfub -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
         dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
+        rm -f "$tmp" >/dev/null
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
 
-bindkey -s '^o' 'rancd\n'  # zsh
+bindkey -s '^o' 'lfcd\n'  # zsh
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
