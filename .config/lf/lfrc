@@ -13,7 +13,7 @@ cmd open ${{
         text/*|application/json) $EDITOR "$f";;
 		application/vnd.ms-powerpoint) setsid -f libreoffice "$f" > /dev/null 2>&1 ;;
 		application/vnd.openxmlformats-officedocument.wordprocessingml.document) setsid -f lowriter "$f" > /dev/null 2>&1 ;;
-	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc "$fx" ;;
+	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) setsid -f localc "$fx" ;;
 		application/pdf) setsid -f zathura "$f" ;;
 		audio/*) mpv --audio-display=no "$f" ;;
 		video/*) setsid -f mpv "$f" -quiet >/dev/null 2>&1 ;;
