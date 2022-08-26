@@ -6,6 +6,7 @@ source  /home/mouad/github/zsh-git-prompt/zshrc.sh
 # PROMPT='%B%{$fg[red]%}[%{$fg[yellow]%}Hollow%{$fg[green]%}@%{$fg[blue]%}Soul %{$fg[magenta]%}%~%{$fg[red]%}]%b$(git_super_status)%{$reset_color%}$%b '
 PROMPT='%B%{$fg[red]%}[% %{$fg[magenta]%}%~%{$fg[red]%}]%b$(git_super_status)%{$reset_color%}$%b '
 
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # History in cache directory:
 HISTSIZE=10000
@@ -53,7 +54,7 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# Use lf to switch directories and bind it to ctrl-o
+# Use ranger to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"
     lfub -last-dir-path="$tmp" "$@"
@@ -63,6 +64,20 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+
+# rancd () {
+#     tmp="$(mktemp)"
+#     ranger --choosedir="$tmp" "$@"
+#     if [ -f "$tmp" ]; then
+#         dir="$(cat "$tmp")"
+#         rm -f "$tmp"
+#         if [ -d "$dir" ]; then
+#             if [ "$dir" != "$(pwd)" ]; then
+#                 cd "$dir"
+#             fi
+#         fi
+#     fi
+# }
 
 bindkey -s '^o' 'lfcd\n'  # zsh
 
@@ -78,3 +93,21 @@ compinit
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+# export PATH="/home/mouad/miniconda3/bin:$PATH"  # commented out by conda initialize
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/mouad/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/mouad/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mouad/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/mouad/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
