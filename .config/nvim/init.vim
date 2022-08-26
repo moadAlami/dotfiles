@@ -12,6 +12,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'tommcdo/vim-lion'
 	Plug 'tpope/vim-commentary'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " Prevent clipboard hijacking
@@ -125,8 +126,8 @@ highlight Visual cterm=reverse ctermbg=NONE
 " BibTex
 	autocmd FileType tex map <leader>bt :!bibtex %:r <c-r><CR><CR>
 " Build only
-	autocmd FileType tex map <leader>bui :w! \| !lualatex <c-r>%<CR>
-	" autocmd FileType tex map <leader>bui :w! \| !pdflatex <c-r>%<CR>
+	" autocmd FileType tex map <leader>bui :w! \| !lualatex <c-r>%<CR>
+	autocmd FileType tex map <leader>bui :w! \| !pdflatex <c-r>%<CR>
 
 " Open the compiled .pdf
 	autocmd FileType tex map <leader>o :!zathura <c-r>%<Backspace><Backspace><Backspace>pdf & <CR><CR>
