@@ -2,9 +2,8 @@
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-$HOME/.fehbg
+# $HOME/.fehbg
 
-# exec i3
 while true; do
 	dwm 2> ~/.config/dwm.log
 done
