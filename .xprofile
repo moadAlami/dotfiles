@@ -1,10 +1,15 @@
 #!/usr/bin/env sh
 
-mpd & # Music Player Daemon
+export _JAVA_AWT_WM_NONREPARENTING=1
+# mpd & # Music Player Daemon
 feh --bg-fill --no-fehbg $HOME/Pictures/Arch.jpg # Wallpaper
 setxkbmap -option caps:escape && setxkbmap -layout fr & # Set keyboard layout
-sudo chown mouad /sys/class/backlight/*/brightness & # For the brightness module
 dunst & # Notification 
 picom & # Transparency
-mailsync & # for the email module
+# transmission-daemon & # Torrent daemon
+xinput set-prop "ASUS ROG STRIX IMPACT" "libinput Accel Speed" -0.9 # Set mouse speed
+# mailsync & # for the email module
 dwm-bar & # Status bar
+# mount ssd
+sudo mount UUID=961E-EF65 /home/mouad/SSD -o rw,dmask=022,fmask=133,uid=1000,gid=998
+sudo mount UUID=9E1839F91839D14F /home/mouad/external -o rw,dmask=022,fmask=133,uid=1000,gid=998
