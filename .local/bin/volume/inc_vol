@@ -26,7 +26,7 @@ else
 	icon=$spmute
 fi
 
-pactl set-sink-volume 0 +5%
+amixer sset 'Master'  5%+
 
 kill -9 $(cat $HOME/github/dwm-bar/dwmpid)
 

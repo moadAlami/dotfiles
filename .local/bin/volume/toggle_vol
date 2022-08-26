@@ -7,7 +7,7 @@ sp1=🔉
 sp2=🔊
 spmute=🔇
 
-pactl set-sink-mute 0 toggle
+amixer sset 'Master' toggle
 
 toggle=$(amixer get Master | tail -n 1 | awk '{print $6}' | sed 's/\[//;s/\]//')
 
