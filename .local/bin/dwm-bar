@@ -113,7 +113,6 @@ function battery {
 			bCase=2
 		elif [[ "$state" == "Full" ]];then
 			bCase=3
-			# notify-send -u critical "Battery Full"
 		fi
 
 		if [[ $bCase == 1 ]];then 
@@ -123,7 +122,7 @@ function battery {
 		elif [[ $bCase == 3 ]];then
 			printf " ^c#FF0000^Battery full^d^ "
 		else 
-			printf " ^c$color^$perc%%$bat$time^d^ "
+			printf " ^c$color^$perc%%$bat^d^"
 		fi
 	else
 		printf " ^c#FF0000^^d^ "
@@ -143,7 +142,7 @@ function cpu {
 	therm=""
 	color="#FFFFFF"
 	  
-	declare -i temp=$(sensors acpitz-acpi-0 | awk -F "['+.']" '/^temp1/ {print $2}')
+	declare -i temp=$(sensors | awk -F "['+.']" '/^Tctl/ {print $2}')
 
 	if [[ $temp -ge $crit ]];then
 		color="#FF0000"
@@ -200,6 +199,10 @@ function mpd {
 		echo " $(ncmpcpp -q --current-song='{{%a - }%t}|{%f}') $icon"
 	fi
 }
+
+function radio {
+	echo " $(sed -n '3p' /home/mouad/.cache/classic-radio-name | awk -F: '{ print $2 }') "
+}
 	
 function network {
 	[ "$(cat /sys/class/net/w*/operstate)" = 'down' ] && wifiicon="^c#FF0000^^d^"
@@ -248,12 +251,12 @@ function torrent {
 				sort -h | uniq -c | sed " # Now we replace the standin letters with icons.
 							s/A/^c#FF0000^⏹^d^/g;
 							s/B/^c#ffa500^⧗^d^/g;
-							s/L/^c#1DDAD7^^d^/g;
-							s/M/^c#1DDAD7^^d^/g;
-							s/N/^c#00FF00^✔^d^/g;
+							s/L/^c#1DDAD7^⬇^d^/g;
+							s/M/^c#1DDAD7^⬇^d^/g;
+							s/N/^c#00FF00^✅^d^/g;
 							s/Z/^c#00FF00^🙐^d^/g" | awk '{print $2, $1}' | sed -e "s/ $//g" | tr '\n' ' '
 							if [[ "$(transmission-remote -l | grep Sum | awk '{print $2}')" -eq "None" ]];then
-								printf " ^c$color^⓿ ^d^ "
+								printf "^c$color^⓿ ^d^"
 							fi
 }
 
@@ -297,7 +300,7 @@ function email {
 delim="/"
 
 while true;do
-	xsetroot -name "$(mpd)$delim$(bandwidth)$delim$(memory)$delim$(brightness)$delim$(email)$delim$(volume)$delim$(cpu)$delim$(battery)$delim$(datetime)$delim$(numlock)" 2> ~/.config/dwm-bar.log
+	xsetroot -name "$(mpd)$delim$(bandwidth)$delim $(torrent)$delim$(memory)$delim$(email)$delim$(volume)$delim$(cpu)$delim$(datetime)$delim$(numlock)" 2> ~/.config/dwm-bar.log
 		sleep 1 &
 		echo $! > $HOME/github/dwm-bar/dwmpid
 		wait $!

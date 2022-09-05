@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+x=$1
+
+case $x in
+	on) xmodmap -e 'keycode 66 = Caps_Lock';;
+	off) setxkbmap -option caps:escape;xmodmap -e 'keycode 66 = Escape';;
+esac

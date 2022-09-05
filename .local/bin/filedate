@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+newName=$(stat --format=%y "$1" | awk -F. '{ print $1}' | sed 's/\ /_/g;s/:/-/g')
+
+mv $1 $newName.$2
