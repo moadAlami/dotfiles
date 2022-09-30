@@ -4,7 +4,7 @@ set drawbox
 set shellopts '-eu'
 set icons
 set scrolloff 10
-set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+set hiddenfiles ".*:*.aux:*.bbl:*.bcf:*.blg:*.run.xml:*.cpg:*.dbf:*.prj:*.qmd:*.shx:*.aux.xml"
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
 
@@ -32,7 +32,7 @@ cmd extract ${{
 	printf "%s\n\t" "$fx"
 	printf "extract?[y/N]"
 	read ans
-	[ $ans = "y" ] && aunpack $fx
+	[ $ans = "y" ] && for x in $fx; do eval aunpack -- \"$x\"; done
 }}
 
 cmd delete ${{
@@ -41,7 +41,8 @@ cmd delete ${{
 	printf "%s\n\t" "$fx"
 	printf "delete?[y/N]"
 	read ans
-	[ $ans = "y" ] && rm -rf -- "$fx"
+	# [ $ans = "y" ] && rm -rf -- "$fx"
+	[ $ans = "y" ] && for x in $fx; do eval rm -rf -- \"$x\"; done
 }}
 
 cmd moveto ${{
