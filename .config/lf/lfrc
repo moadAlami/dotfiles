@@ -34,7 +34,7 @@ cmd extract ${{
 	read ans
 	OIFS=$IFS
 	IFS=$'\n'
-	[ $ans = "y" ] && for x in $fx; aunpack -- \"$x\"; done
+	[ $ans = "y" ] && for x in $fx;do eval aunpack -- \"$x\"; done
 	IFS=$OIFS
 }}
 
