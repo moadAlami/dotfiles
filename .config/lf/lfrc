@@ -4,7 +4,7 @@ set drawbox
 set shellopts '-eu'
 set icons
 set scrolloff 10
-set hiddenfiles ".*:*.aux:*.bbl:*.bcf:*.blg:*.run.xml:*.cpg:*.dbf:*.prj:*.qmd:*.shx:*.aux.xml"
+set hiddenfiles ".*:*.aux:*.bbl:*.bcf:*.blg:*.run.xml:*.cpg:*.dbf:*.prj:*.shx"
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
 
@@ -32,7 +32,10 @@ cmd extract ${{
 	printf "%s\n\t" "$fx"
 	printf "extract?[y/N]"
 	read ans
-	[ $ans = "y" ] && for x in $fx; do eval aunpack -- \"$x\"; done
+	OIFS=$IFS
+	IFS=$'\n'
+	[ $ans = "y" ] && for x in $fx; aunpack -- \"$x\"; done
+	IFS=$OIFS
 }}
 
 cmd delete ${{
@@ -41,15 +44,16 @@ cmd delete ${{
 	printf "%s\n\t" "$fx"
 	printf "delete?[y/N]"
 	read ans
-	# [ $ans = "y" ] && rm -rf -- "$fx"
+	OIFS=$IFS
+	IFS=$'\n'
 	[ $ans = "y" ] && for x in $fx; do eval rm -rf -- \"$x\"; done
+	IFS=$OIFS
 }}
 
 cmd moveto ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
 	clear; echo "Move to where?"
-	# dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/bookmarks | fzf | sed 's|~|$HOME|')" &&
 	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' ${XDG_CONFIG_HOME:-$HOME/.config}/bookmarks | fzf | sed 's|~|$HOME|')" &&
 	for x in $fx; do
 		eval mv -iv \"$x\" \"$dest\"
@@ -61,7 +65,6 @@ cmd copyto ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
 	clear; echo "Copy to where?"
-	# dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/bookmarks | fzf | sed 's|~|$HOME|')" &&
 	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' ${XDG_CONFIG_HOME:-$HOME/.config}/bookmarks | fzf | sed 's|~|$HOME|')" && for x in "$fx"; do
 		eval cp -ivr \"$x\" \"$dest\"
 	done &&
