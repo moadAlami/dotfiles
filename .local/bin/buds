@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+if [ $(echo -e 'Yes\nNo' | dmenu -i -p "Connect to earbuds?") == 'Yes' ];then
+	bluetoothctl connect E0:67:81:13:77:4A && notify-send "Earbuds status" "Connected 🎧"
+else
+	bluetoothctl disconnect && notify-send "Earbuds status" "Disconnected ❌"
+fi
