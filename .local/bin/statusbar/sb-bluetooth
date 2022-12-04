@@ -2,25 +2,12 @@
 
 function bluetooth {
 	declare -i perc=$(journalctl -b --user-unit pulseaudio -g "Battery Level" -o cat | tail -n 1 | awk '{ print $3 }' | sed s/%//)
-	# icon=' ^c#00aaff^^d^ '
 	icon='  '
-	# if [[ $perc -le 15 ]];then
-	# 	color="#FF0000"
-	# elif [[ $perc -le 30 ]];then
-	# 	color="#FFAE00"
-	# elif [[ $perc -le 50 ]];then
-	# 	color="#FFF600"
-	# elif [[ $perc -le 75 ]];then
-	# 	color="#A8FF00"
-	# elif [[ $perc -le 100 ]];then
-	# 	color="#A8FF00"
-	# fi
 
 	if [[ "$(bluetoothctl info)" == "Missing device address argument" ]];then
 		printf "  OFF "
 	else
-	# printf " $icon^c$color^$perc%%^d^ " 
-	printf " $icon$perc%% " 
+		printf " $icon$perc%% " 
 	fi
 }
 

@@ -1,8 +1,6 @@
 #!/usr/bin/sh
 
 function bandwidth {
-	# INLABEL="^c#1DDAD7^^d^ "
-	# OUTLABEL="^c#1DDAD7^^d^ "
 	INLABEL="⬇ "
 	OUTLABEL="⬆ "
 
@@ -15,7 +13,6 @@ function bandwidth {
 			(! [ "$TREAT_UNKNOWN_AS_UP" = "1" ] && 
 			! [ "`cat /sys/class/net/${INTERFACE}/operstate`" = "up" ])
 		then
-			# echo "^c#FF0000^^d^"
 			echo "📡"
 		fi
 
@@ -74,7 +71,6 @@ function bandwidth {
 		  echo "${tx_kib}K"
 		fi
 	else
-		# echo "^c#FF0000^^d^"
 		echo "📡"
 	fi
 }
