@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
 function datetime {
-	printf "$(date '+%a %d %b %H:%M:%S')"
+	printf "$(date '+%a %d %b %H:%M')"
 }
 
 datetime
