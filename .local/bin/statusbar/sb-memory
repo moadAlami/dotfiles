@@ -1,0 +1,32 @@
+#!/usr/bin/sh
+
+function memory {
+	used=$(free -h | awk '/^Mem:/ {print $3}' | sed 's/Gi//;s/Mi//')
+	total=$(free -h | awk '/^Mem:/ {print $2}' | sed 's/Gi//')
+	unit=$(free -h | awk '/^Mem:/ {print $3}' | tr -d [:digit:][:punct])
+
+	if [[ "$unit" == "Mi" ]];then
+		used=$(echo "scale=3;$used/1000" | bc)
+	fi
+
+	perc=$(echo "scale=1;$used*100/$total" | bc)
+
+	# if [[ 1 -eq "$(echo "$perc > 85" | bc)" ]];then
+	# 	color="#FF0000"
+	# elif [[ 1 -eq "$(echo "$perc > 70" | bc)" ]];then
+	# 	color="#FFAE00"
+	# elif [[ 1 -eq "$(echo "$perc > 50" | bc)" ]];then
+	# 	color="#FFF600"
+	# elif [[ 1 -eq "$(echo "$perc > 30" | bc)" ]];then
+	# 	color="#A8FF00"
+	# elif [[ 1 -eq "$(echo "$perc > 15" | bc)" ]];then
+	# 	color="#A8FF00"
+	# else
+	# 	color="#FFFFFF"
+	# fi
+
+	# printf "🗄 ^c$color^$perc%%^d^"
+	printf "🗄 $perc%%"
+}
+
+memory

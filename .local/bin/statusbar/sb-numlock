@@ -1,0 +1,18 @@
+#!/usr/bin/sh
+
+function numlock {
+	# pkill -RTMIN+1 dwmblocks
+	state=$(xset -q | grep -F "Num Lock" | awk '{print $8}')
+
+	color="#FF0000"
+	if [[ "$state" == "on" ]];then
+		color="#00FF00"
+	elif [[ "$state" == "off" ]];then
+		color="#222222"
+	fi
+
+	printf "^c$color^^d^"
+
+}
+
+numlock

@@ -1,0 +1,14 @@
+#!/usr/bin/sh
+
+function mpd {
+	if [[ "$(mpc | wc -l)" == 3 ]];then if mpc | grep playing >/dev/null;then
+			icon=''
+		else 
+			icon="⏸ "
+		fi
+
+		echo "$(ncmpcpp -q --current-song='{{%a - }%t}|{%f}') $icon"
+	fi
+}
+
+mpd

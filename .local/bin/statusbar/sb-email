@@ -1,0 +1,12 @@
+#!/usr/bin/sh
+
+function email {
+	declare -i new=$(du -a ~/.local/share/mail/*/INBOX/new/* 2>/dev/null | sed -n '$=')
+	if [[ "$new" == 0 ]];then
+		printf " 📭 "
+	else
+		printf " $new 📬 "
+	fi
+}
+
+email

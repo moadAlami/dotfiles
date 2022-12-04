@@ -1,0 +1,8 @@
+#!/usr/bin/sh
+
+function brightness {
+	brightness=$(printf "%.0f" "$(xbacklight -get)")
+	printf " 💡 $brightness%% "
+}
+
+brightness

@@ -1,0 +1,24 @@
+#!/usr/bin/sh
+
+function cpu {
+	warn=70
+	crit=90
+	# therm=""
+	therm="🌡"
+	# color="#FFFFFF"
+	  
+	declare -i temp=$(sensors | awk -F "['+.']" '/^Tctl/ {print $2}')
+
+	# if [[ $temp -ge $crit ]];then
+	# 	# color="#FF0000"
+	# 	therm=""
+	# elif [[ $temp -ge $warn ]];then
+	# 	# color="#FFFC00"
+	# 	therm=""
+	# fi
+
+	# printf "^c$color^$therm $temp°C^d^"
+	printf "$therm $temp°C"
+}
+
+cpu

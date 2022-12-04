@@ -1,0 +1,31 @@
+#!/usr/bin/sh
+
+function volume {
+	sp0=🔈
+	sp1=🔉
+	sp2=🔊
+	spmute=🔇 
+
+	toggle=$(amixer | awk '/^  Front Left: Playback/ {print $6}' | sed 's/\[//;s/\]//')
+	declare -i vol=$(amixer | awk '/^  Front Left: Playback/ {print $5}' | sed 's/\[//;s/\]//;s/\%//')
+
+	if [[ $vol -le 50 ]]
+	then
+		if [[ $vol -le 5 ]]
+		then
+			icon=$sp0
+		else
+			icon=$sp1
+		fi
+	else
+		icon=$sp2
+	fi
+
+	if [[ "$toggle" == "on" ]];then
+		printf "$icon $vol%%"
+	else
+		echo "$spmute $vol%"
+	fi
+}
+
+volume
