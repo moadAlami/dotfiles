@@ -7,33 +7,19 @@ function battery {
 		declare -i perc=$(acpi | awk -F "[',']" '{print $2}' | sed 's/\%//; s/\ //')
 		time="("$(acpi | awk -F "[':,']" '{print $4":"$5}' | sed 's/\ //')")"
 
+
 		if [[ "$state" == 'Discharging' ]];then
+			bat='🔋'
 			if [[ $perc -le 5 ]];then
 				bCase=1
 				notify-send -u critical "$perc% Low battery $time" -h string:x-canonical-private-synchronous:anything
 				systemctl suspend
 			elif [[ $perc -le 15 ]];then
-				color="#FF0000"
-				bat='  '
 				notify-send -u critical "$bat$perc% Low battery $time" -h string:x-canonical-private-synchronous:anything
-			elif [[ $perc -le 30 ]];then
-				color="#FFAE00"
-				bat='  '
-			elif [[ $perc -le 50 ]];then
-				color="#FFF600"
-				bat='  '
-			elif [[ $perc -le 75 ]];then
-				color="#A8FF00"
-				bat='  '
-			elif [[ $perc -le 100 ]];then
-				color="#A8FF00"
-				bat='  '
 			fi
 		elif [[ "$state" == 'Charging' ]];then
-			color="#FFFFFF"
-			bat='  '
+			bat='🔌'
 		elif [[ "$state" == "Unknown" ]];then
-			color="#FFFFFF"
 			bat='  '
 			bCase=2
 		elif [[ "$state" == "Full" ]];then
@@ -41,16 +27,14 @@ function battery {
 		fi
 
 		if [[ $bCase == 1 ]];then 
-			printf " ^c#FF0000^Low battery^d^ "
+			printf "Low battery"
 		elif [[ $bCase == 2 ]];then
-			printf " ^c$color^$perc%%$bat^d^"
+			printf "$bat $perc%%"
 		elif [[ $bCase == 3 ]];then
-			printf " ^c#FF0000^Battery full^d^ "
+			printf "Battery full"
 		else 
-			printf " ^c$color^$perc%%$bat^d^"
+			printf "$bat $perc%%"
 		fi
-	else
-		printf " ^c#FF0000^^d^ "
 	fi
 }
 
