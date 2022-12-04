@@ -28,5 +28,6 @@ else
 	icon=$spmute
 fi
 
-kill -9 $(cat $HOME/github/dwm-bar/dwmpid)
+kill -38 $(pidof dwmblocks)
+
 notify-send "$icon $((vol))% [$toggle]" -h string:x-canonical-private-synchronous:anything
