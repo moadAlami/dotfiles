@@ -1,7 +1,11 @@
 #!/usr/bin/sh
 
 if [ $(echo -e 'Yes\nNo' | dmenu -i -p "Connect to earbuds?") == 'Yes' ];then
+	bluetoothctl power on
 	bluetoothctl connect E0:67:81:13:77:4A && notify-send "Earbuds status" "Connected 🎧"
+	pkill -RTMIN+8 dwmblocks
 else
+	bluetoothctl power off
 	bluetoothctl disconnect && notify-send "Earbuds status" "Disconnected ❌"
+	pkill -RTMIN+8 dwmblocks
 fi
