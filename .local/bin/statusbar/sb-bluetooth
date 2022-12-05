@@ -1,5 +1,9 @@
 #!/usr/bin/sh
 
+case $BLOCK_BUTTON in
+	1) setsid -f blueman-manager ;;
+esac
+
 function bluetooth {
 	declare -i perc=$(journalctl -b --user-unit pulseaudio -g "Battery Level" -o cat | tail -n 1 | awk '{ print $3 }' | sed s/%//)
 	icon='  '

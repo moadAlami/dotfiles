@@ -1,5 +1,12 @@
 #!/usr/bin/sh
 
+case "$BLOCK_BUTTON" in
+	1) yad --calendar \
+		--posx=-1 --posy=0 \
+		--undecorated --fixed \
+		--close-on-unfocus --no-buttons ;;
+esac
+
 function datetime {
 	printf "$(date '+%a %d %b %H:%M')"
 }

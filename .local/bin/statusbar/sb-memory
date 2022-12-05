@@ -1,17 +1,17 @@
 #!/usr/bin/sh
 
-function memory {
-	used=$(free -h | awk '/^Mem:/ {print $3}' | sed 's/Gi//;s/Mi//')
-	total=$(free -h | awk '/^Mem:/ {print $2}' | sed 's/Gi//')
-	unit=$(free -h | awk '/^Mem:/ {print $3}' | tr -d [:digit:][:punct])
+case $BLOCK_BUTTON in
+  1)notify-send ''"Top memory hogs:" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)";;
+esac
 
-	if [[ "$unit" == "Mi" ]];then
-		used=$(echo "scale=3;$used/1000" | bc)
-	fi
+used=$(free -h | awk '/^Mem:/ {print $3}' | sed 's/Gi//;s/Mi//')
+total=$(free -h | awk '/^Mem:/ {print $2}' | sed 's/Gi//')
+unit=$(free -h | awk '/^Mem:/ {print $3}' | tr -d [:digit:][:punct])
 
-	perc=$(echo "scale=1;$used*100/$total" | bc)
+if [[ "$unit" == "Mi" ]];then
+	used=$(echo "scale=3;$used/1000" | bc)
+fi
 
-	printf "🗄 $perc%%"
-}
+perc=$(echo "scale=1;$used*100/$total" | bc)
 
-memory
+printf "🗄 $perc%%"

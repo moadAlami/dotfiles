@@ -1,5 +1,9 @@
 #!/usr/bin/sh
 
+case $BLOCK_BUTTON in
+  1) st -e nmtui ;;
+esac
+
 function bandwidth {
 	INLABEL="⬇ "
 	OUTLABEL="⬆ "

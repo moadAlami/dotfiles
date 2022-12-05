@@ -1,31 +1,36 @@
 #!/usr/bin/sh
 
-function volume {
-	sp0=🔈
-	sp1=🔉
-	sp2=🔊
-	spmute=🔇 
+# function volume {
 
-	toggle=$(amixer | awk '/^  Front Left: Playback/ {print $6}' | sed 's/\[//;s/\]//')
-	declare -i vol=$(amixer | awk '/^  Front Left: Playback/ {print $5}' | sed 's/\[//;s/\]//;s/\%//')
+case $BLOCK_BUTTON in
+	1) amixer -q sset 'Master' toggle ;;
+	3) setsid -f pavucontrol ;;
+	4) amixer -q sset 'Master'  5%+ ;;
+	5) amixer -q sset 'Master'  5%- ;;
+esac
 
-	if [[ $vol -le 50 ]]
+sp0=🔈
+sp1=🔉
+sp2=🔊
+spmute=🔇 
+
+toggle=$(amixer | awk '/^  Front Left: Playback/ {print $6}' | sed 's/\[//;s/\]//')
+declare -i vol=$(amixer | awk '/^  Front Left: Playback/ {print $5}' | sed 's/\[//;s/\]//;s/\%//')
+
+if [[ $vol -le 50 ]]
+then
+	if [[ $vol -le 5 ]]
 	then
-		if [[ $vol -le 5 ]]
-		then
-			icon=$sp0
-		else
-			icon=$sp1
-		fi
+		icon=$sp0
 	else
-		icon=$sp2
+		icon=$sp1
 	fi
+else
+	icon=$sp2
+fi
 
-	if [[ "$toggle" == "on" ]];then
-		printf "$icon $vol%%"
-	else
-		echo "$spmute $vol%"
-	fi
-}
-
-volume
+if [[ "$toggle" == "on" ]];then
+	printf "$icon $vol%%"
+else
+	echo "$spmute $vol%"
+fi
