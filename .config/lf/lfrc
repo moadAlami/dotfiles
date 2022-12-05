@@ -4,7 +4,7 @@ set drawbox
 set shellopts '-eu'
 set icons
 set scrolloff 10
-set hiddenfiles ".*:*.aux:*.bbl:*.bcf:*.blg:*.run.xml:*.cpg:*.dbf:*.prj:*.shx"
+set hiddenfiles ".*:*.aux:*.bbl:*.bcf:*.blg:*.run.xml:*.cpg:*.dbf:*.prj:*.shx:*.qmd"
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
 
@@ -17,6 +17,7 @@ cmd open ${{
 		application/pdf) setsid -f zathura "$f" ;;
 		audio/*) mpv --audio-display=no "$f" ;;
 		video/*) setsid -f mpv "$f" -quiet >/dev/null 2>&1 ;;
+		image/*) setsid -f feh -B "white" -- "$f" ;;
         *) xdg-open "$f" ;;
 
     esac
@@ -108,8 +109,8 @@ map gm cd ~/SSD/College/M.Sc
 map gM cd ~/data/Music
 map gs cd ~/.local/bin
 map gt cd ~/external/torrents
-map gp cd ~/SSD/College/PhD
-map gl cd ~/SSD/projects/PAD
+map gp cd ~/SSD/College/PhD/papers/
+map gl cd ~/SSD/PoleDigital/surveyMeteo
 map gP cd ~/external
 map gr cd ~/github
 map gR cd ~/SSD/College/PhD/ref
