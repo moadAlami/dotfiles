@@ -8,7 +8,7 @@ function battery {
 		time="("$(acpi | awk -F "[':,']" '{print $4":"$5}' | sed 's/\ //')")"
 
 
-		if [[ "$state" == 'Discharging' ]];then
+		if [[ "$state" == 'Not charging' ]];then
 			bat='🔋'
 			if [[ $perc -le 5 ]];then
 				bCase=1
@@ -18,9 +18,9 @@ function battery {
 				notify-send -u critical "$bat$perc% Low battery $time" -h string:x-canonical-private-synchronous:anything
 			fi
 		elif [[ "$state" == 'Charging' ]];then
-			bat='🔌'
+			bat='⚡'
 		elif [[ "$state" == "Unknown" ]];then
-			bat='  '
+			bat='🔋'
 			bCase=2
 		elif [[ "$state" == "Full" ]];then
 			bCase=3
