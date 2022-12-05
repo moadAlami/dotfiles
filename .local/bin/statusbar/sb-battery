@@ -8,7 +8,7 @@ function battery {
 		time="("$(acpi | awk -F "[':,']" '{print $4":"$5}' | sed 's/\ //')")"
 
 
-		if [[ "$state" == 'Not charging' ]];then
+		if [[ "$state" == 'Not charging'  ]] || [[ "$state" == 'Discharging'  ]];then
 			bat='🔋'
 			if [[ $perc -le 5 ]];then
 				bCase=1
