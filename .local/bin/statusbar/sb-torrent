@@ -18,7 +18,7 @@ function torrent {
 			s/.*%.*/M/g" |
 				sort -h | uniq -c | sed " # Now we replace the standin letters with icons.
 							s/A/⏹/g;
-							s/B/⏲/g;
+							s/B/⏳/g;
 							s/L/🔽/g;
 							s/M/🔽/g;
 							s/N/✅/g;
