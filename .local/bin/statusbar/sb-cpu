@@ -5,7 +5,7 @@ function cpu {
 	  
 	declare -i temp=$(sensors | awk -F "['+.']" '/^Tctl/ {print $2}')
 	if [[ $temp -eq 0 ]];then
-		declare -i temp=$(sensors | awk -F "['+.']" '/^temp1/ {print $2}' | head -n 1)
+		declare -i temp=$(sensors | awk -F "['+.']" '/^temp1/ {print $2}' | tail -n 1)
 	fi
 	printf "$therm $temp°C"
 }
