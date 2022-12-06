@@ -225,8 +225,8 @@ highlight Visual cterm=reverse ctermbg=NONE
 
 " Compile, Kill and re-run
 	autocmd BufWritePost ~/github/dwmblocks/config.h !cd ~/github/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
-	autocmd BufWritePost ~/github/dmenu/config.h !cd ~/github/dmenu/; sudo make install && { killall -q dmenu;setsid dmenu & }
+	autocmd BufWritePost ~/github/dmenu/config.h !cd ~/github/dmenu/; sudo make install;
 	autocmd BufWritePost ~/github/dwm/config.h !cd ~/github/dwm/; sudo make install && { killall -q dwm;setsid dwm & }
-	autocmd BufWritePost ~/github/st/config.h !cd ~/github/st/; sudo make install && { killall -q st;setsid st & }
-	autocmd BufWritePost ~/github/surf/config.h !cd ~/github/surf/; sudo make insurfall && { killall -q surf;setsid surf & }
-	autocmd BufWritePost ~/github/tabbed/config.h !cd ~/github/tabbed/; sudo make intabbedall && { killall -q tabbed;setsid tabbed & }
+	autocmd BufWritePost ~/github/st/config.h !cd ~/github/st/; sudo make install;
+	autocmd BufWritePost ~/github/surf/config.h !cd ~/github/surf/; sudo make install;
+	autocmd BufWritePost ~/github/tabbed/config.h !cd ~/github/tabbed/; sudo make instal;
