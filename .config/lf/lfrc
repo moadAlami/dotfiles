@@ -12,7 +12,7 @@ cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
 		application/vnd.ms-powerpoint) setsid -f loimpress "$f" > /dev/null 2>&1 ;;
-		application/vnd.oasis.opendocument.presentation) setsid -f loimpress "$f" > /dev/null 2>&1 ;;
+		application/*presentation*) setsid -f loimpress "$f" > /dev/null 2>&1 ;;
 		application/vnd.openxmlformats-officedocument.wordprocessingml.document) setsid -f lowriter "$f" > /dev/null 2>&1 ;;
 		application/vnd.oasis.opendocument.text) setsid -f lowriter "$f" > /dev/null 2>&1 ;;
 		application/*spreadsheet*) setsid -f localc "$f" ;;
