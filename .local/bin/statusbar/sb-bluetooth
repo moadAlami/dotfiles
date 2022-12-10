@@ -1,7 +1,8 @@
 #!/usr/bin/sh
 
 case $BLOCK_BUTTON in
-	1) setsid -f blueman-manager ;;
+	1) bluetoothctl power on && bluetoothctl connect E0:67:81:13:77:4A && notify-send "Bluetooth status" "Connected 🎧" ;;
+	3) bluetoothctl power off &> /dev/null ;;
 esac
 
 function bluetooth {
