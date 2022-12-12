@@ -2,8 +2,7 @@
 
 case $BLOCK_BUTTON in
     1) $TERMINAL -e tremc ;;
-    3) pgrep -x dunst >/dev/null && notify-send "Torrent module" "🛑: paused
-⏳: idle (seeds needed)
+    3) pgrep -x dunst >/dev/null && notify-send "Torrent module" "⏳: idle (seeds needed)
 🔼: uploading (unfinished)
 🔽: downloading
 ✅: done
@@ -12,13 +11,6 @@ case $BLOCK_BUTTON in
 esac
 
 function torrent {
-
-	# if ! [[ "$(ps -axch | grep transmission-da)" = "" ]];then
-	# 	color="#00FF00"
-	# else
-	# 	color="#FF0000"
-	# fi
-
 	transmission-remote -l | grep % |
 		sed " # This first sed command is to ensure a desirable order with sort
 			s/.*Stopped.*/A/g;
