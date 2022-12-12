@@ -1,14 +1,16 @@
 #!/usr/bin/sh
 
-function mpd {
-	if [[ "$(mpc | wc -l)" == 3 ]];then if mpc | grep playing >/dev/null;then
-			icon=''
-		else 
-			icon="⏸ "
-		fi
+case $BLOCK_BUTTON in
+	1) mpc toggle &> /dev/null ;;
+	4) mpc next &> /dev/null ;;
+	5) mpc prev &> /dev/null ;;
+esac
 
-		echo "$(ncmpcpp -q --current-song='{{%a - }%t}|{%f}') $icon"
+if [[ "$(mpc | wc -l)" == 3 ]];then if mpc | grep playing >/dev/null;then
+		icon=''
+	else 
+		icon=" ⏸"
 	fi
-}
 
-mpd
+	echo " $(ncmpcpp -q --current-song='{{%a - }%t}|{%f}')$icon"
+fi
