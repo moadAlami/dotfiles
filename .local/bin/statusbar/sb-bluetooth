@@ -10,9 +10,9 @@ function bluetooth {
 	icon='  '
 
 	if [[ "$(bluetoothctl info)" == "Missing device address argument" ]];then
-		printf "  OFF "
+		printf " OFF "
 	else
-		printf " $icon$perc%% " 
+		printf "$icon$perc%% " 
 	fi
 }
 
