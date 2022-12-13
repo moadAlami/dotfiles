@@ -7,12 +7,12 @@ esac
 
 function bluetooth {
 	declare -i perc=$(journalctl -b --user-unit pulseaudio -g "Battery Level" -o cat | tail -n 1 | awk '{ print $3 }' | sed s/%//)
-	icon='  '
+	icon=''
 
 	if [[ "$(bluetoothctl info)" == "Missing device address argument" ]];then
-		printf " OFF "
+		printf " $icon OFF "
 	else
-		printf "$icon$perc%% " 
+		printf " $icon$perc%% " 
 	fi
 }
 
