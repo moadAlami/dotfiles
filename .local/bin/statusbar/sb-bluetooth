@@ -1,8 +1,8 @@
 #!/usr/bin/sh
 
 case $BLOCK_BUTTON in
-	1) bluetoothctl power on && bluetoothctl connect E0:67:81:13:77:4A && notify-send "Bluetooth status" "Connected 🎧" ;;
-	3) bluetoothctl power off &> /dev/null ;;
+	1) bluetoothctl power on && bluetoothctl connect E0:67:81:13:77:4A && notify-send "Bluetooth status" "Connected 🎧" &&  pkill -RTMIN+4 dwmblocks ;;
+	3) bluetoothctl power off &> /dev/null &&  pkill -RTMIN+4 dwmblocks ;;
 esac
 
 function bluetooth {
@@ -12,7 +12,7 @@ function bluetooth {
 	if [[ "$(bluetoothctl info)" == "Missing device address argument" ]];then
 		printf " $icon OFF "
 	else
-		printf " $icon$perc%% " 
+		printf " $icon $perc%% " 
 	fi
 }
 
