@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/zsh
 
 function battery {
 
@@ -38,4 +38,6 @@ function battery {
 	fi
 }
 
-battery
+if [[ $HOST != "DESKTOP" ]];then
+	battery
+fi
