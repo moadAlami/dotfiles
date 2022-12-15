@@ -2,8 +2,8 @@
 
 case $BLOCK_BUTTON in
 	1) mpc toggle &> /dev/null ;;
-	4) mpc next &> /dev/null ;;
-	5) mpc prev &> /dev/null ;;
+	4) mpc prev &> /dev/null ;;
+	5) mpc next &> /dev/null ;;
 esac
 
 if [[ "$(mpc | wc -l)" == 3 ]];then if mpc | grep playing >/dev/null;then
@@ -12,5 +12,7 @@ if [[ "$(mpc | wc -l)" == 3 ]];then if mpc | grep playing >/dev/null;then
 		icon=" ⏸"
 	fi
 
-	echo " $(ncmpcpp -q --current-song='{{%a - }%t}|{%f}')$icon"
+	time="$(mpc | sed -n '2 p' | awk '{ print $3 }')"
+
+	echo " 🎹 $(ncmpcpp -q --current-song='{{%a - }%t}|{%f}') ($time)$icon"
 fi
