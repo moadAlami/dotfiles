@@ -1,4 +1,4 @@
 #!/usr/bin/sh
 
-feh --bg-fill --no-fehbg --randomize -r $HOME/Pictures
+feh --bg-fill --no-fehbg --randomize -r $HOME/Pictures/Wallpapers
 
