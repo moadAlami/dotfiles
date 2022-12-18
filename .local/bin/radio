@@ -1,0 +1,12 @@
+#!/usr/bin/zsh
+
+radio="$(echo -e 'classic\ncafe\neverything\ncyberia\nswing' | dmenu -i -l 5 -p "Choose a radio")"
+url="https://live.musopen.org:8085/streamvbr0"
+if [[ $radio != 'classic' ]]; then
+	url="http://lainon.life:8000/$radio.mp3"
+fi
+
+if [[ $radio != '' ]]; then
+	echo "$radio"
+	pkill -f $url || st -e mpv "$url"
+fi
