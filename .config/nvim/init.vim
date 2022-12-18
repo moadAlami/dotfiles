@@ -124,7 +124,7 @@ highlight Visual cterm=reverse ctermbg=NONE
 " Biber
 	autocmd FileType tex map <leader>bib :!biber %:r <c-r><CR><CR>
 " BibTex
-	autocmd FileType tex map <leader>bt :!bibtex %:r <c-r><CR><CR>
+	autocmd FileType tex map <leader>bt :!bibtex %:t:r <c-r><CR><CR>
 " Build only
 	" autocmd FileType tex map <leader>bui :w! \| !lualatex <c-r>%<CR>
 	autocmd FileType tex map <leader>bui :w! \| !pdflatex <c-r>%<CR>
@@ -224,7 +224,7 @@ highlight Visual cterm=reverse ctermbg=NONE
 
 
 " Compile, Kill and re-run
-	autocmd BufWritePost ~/github/dwmblocks/config.h !cd ~/github/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
+	autocmd BufWritePost ~/github/dwmblocks/config.h !cd ~/github/dwmblocks/; make clean && sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
 	autocmd BufWritePost ~/github/dmenu/config.h !cd ~/github/dmenu/; sudo make install;
 	autocmd BufWritePost ~/github/dwm/config.h !cd ~/github/dwm/; sudo make install && { killall -q dwm;setsid dwm & }
 	autocmd BufWritePost ~/github/st/config.h !cd ~/github/st/; sudo make install;
