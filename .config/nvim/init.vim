@@ -128,6 +128,8 @@ highlight Visual cterm=reverse ctermbg=NONE
 " Build only
 	" autocmd FileType tex map <leader>bui :w! \| !lualatex <c-r>%<CR>
 	autocmd FileType tex map <leader>bui :w! \| !pdflatex <c-r>%<CR>
+" Compile document and run bibtex
+	autocmd FileType tex map <leader>c :w! \| !pdflatex <c-r>%<CR><CR>:!bibtex %:t:r <c-r><CR><CR>:!pdflatex <c-r>%<CR>:!pdflatex <c-r>%<CR>
 
 " Open the compiled .pdf
 	autocmd FileType tex map <leader>o :!zathura <c-r>%<Backspace><Backspace><Backspace>pdf & <CR><CR>
@@ -143,7 +145,7 @@ highlight Visual cterm=reverse ctermbg=NONE
 	autocmd FileType tex inoremap ,sc \textsc{}<++><Esc>T{i
 	autocmd FileType tex inoremap ,bf \textbf{}<Esc>T{i
 	autocmd FileType tex inoremap ,under \underline{}<++><Esc>T{i
-	autocmd FileType tex inoremap ,em \emph{}<++><Esc>T{i
+	autocmd FileType tex inoremap ,em \emph{}<Esc>i
 	autocmd FileType tex inoremap ,hb \hbar<Esc>i
 	autocmd FileType tex inoremap ,hl \hline<Esc>o
 	autocmd FileType tex inoremap ,ol \begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><Enter><++><Esc>3kA\item<Space> 
@@ -166,6 +168,7 @@ highlight Visual cterm=reverse ctermbg=NONE
 	autocmd FileType tex inoremap ,inc \includegraphics[]{<++>}<Esc>F[a
 	autocmd FileType tex inoremap ,vs \vspace{}<Esc>i
 	autocmd FileType tex inoremap ,hs \hspace{}<Esc>i
+	autocmd FileType tex inoremap ,ci ~\cite{}<Esc>i
 	autocmd FileType tex inoremap ,pci \parencite{}<Esc>i
 	autocmd FileType tex inoremap ,tci \textcite{}<Esc>i
 	autocmd FileType tex inoremap ,ct  \captionof{table}{}<Esc>i
