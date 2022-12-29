@@ -16,7 +16,7 @@ cmd open ${{
 		application/vnd.openxmlformats-officedocument.wordprocessingml.document) setsid -f lowriter "$f" > /dev/null 2>&1 ;;
 		application/vnd.oasis.opendocument.text) setsid -f lowriter "$f" > /dev/null 2>&1 ;;
 		application/*spreadsheet*) setsid -f localc "$f" ;;
-		application/pdf) setsid -f zathura "$f" ;;
+		application/pdf) setsid -f zathura "$f" &> /dev/null ;;
 		audio/*) mpv --audio-display=no "$f" ;;
 		video/*) setsid -f mpv "$f" -quiet >/dev/null 2>&1 ;;
 		image/*) setsid -f feh -B "white" -- "$f" ;;
