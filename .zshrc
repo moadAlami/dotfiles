@@ -52,7 +52,7 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# Use ranger to switch directories and bind it to ctrl-o
+# Use lf to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"
     lfub -last-dir-path="$tmp" "$@"
