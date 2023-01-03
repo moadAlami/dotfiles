@@ -1,0 +1,15 @@
+#!/usr/bin/sh
+
+layout="$(setxkbmap -query | grep layout | awk '{ print $2 }')"
+
+case $BLOCK_BUTTON in
+	1) if [[ $layout == "ar" ]];then
+		setxkbmap -option caps:escape && setxkbmap -layout fr
+		layout="FR"
+	elif [[ $layout == "fr" ]];then
+		setxkbmap -layout ar
+		layout="AR"
+	fi
+esac
+
+printf "$layout"
