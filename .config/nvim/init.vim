@@ -193,24 +193,28 @@ highlight Visual cterm=reverse ctermbg=NONE
 " |  _  | | | | |  | | |___
 " |_| |_| |_| |_|  |_|_____|
 
-	autocmd FileType html inoremap <b <b></b><Space><++><Esc>FbT>i
-	autocmd FileType html inoremap <em <em></em><Space><++><Esc>FeT>i
+	autocmd FileType html inoremap <leader>H <html><Esc>o<head><Esc>o</head><Esc>o<body><Esc>o</body><Esc>o</html><Esc>
+	autocmd FileType html inoremap <leader>b <b></b><Space><++><Esc>FbT>i
+	autocmd FileType html inoremap <leader>b <b></b><Space><++><Esc>FbT>i
+	autocmd FileType html inoremap <leader>e <em></em><Space><++><Esc>FeT>i
 	autocmd FileType html inoremap <leader>1 <h1></h1><Enter><Enter><++><Esc>2kf<i
 	autocmd FileType html inoremap <leader>2 <h2></h2><Enter><Enter><++><Esc>2kf<i
 	autocmd FileType html inoremap <leader>3 <h3></h3><Enter><Enter><++><Esc>2kf<i
 	autocmd FileType html inoremap <leader>4 <h4></h4><Enter><Enter><++><Esc>2kf<i
 	autocmd FileType html inoremap <leader>5 <h5></h5><Enter><Enter><++><Esc>2kf<i
 	autocmd FileType html inoremap <leader>6 <h6></h6><Enter><Enter><++><Esc>2kf<i
-	autocmd FileType html inoremap <p <p></p><Enter><Enter><++><Esc>02kf>a
-	autocmd FileType html inoremap <a <a<Space>href=""><++></a><Space><++><Esc>14hi
-	autocmd FileType html inoremap <ul <ul><Enter><li></li><Enter></ul><Enter><Enter><++><Esc>03kf<i
-	autocmd FileType html inoremap <li <Esc>o<li></li><Esc>F>a
-	autocmd FileType html inoremap <ol <ol><Enter><li></li><Enter></ol><Enter><Enter><++><Esc>03kf<i
-	autocmd FileType html inoremap <img <img src="" alt="<++>"><++><esc>Fcf"a
-	autocmd FileType html inoremap <td <td></td><++><Esc>Fdcit
-	autocmd FileType html inoremap <tr <tr></tr><Enter><++><Esc>kf<i
-	autocmd FileType html inoremap <th <th></th><++><Esc>Fhcit
-	autocmd FileType html inoremap <tab <table><Enter></table><Esc>O<Paste>
+	autocmd FileType html inoremap <leader>p <p></p><Enter><Enter><++><Esc>02kf>a
+	autocmd FileType html inoremap <leader>a <a<Space>href=""><++></a><Space><++><Esc>14hi
+	autocmd FileType html inoremap <leader>ul <ul><Enter><li></li><Enter></ul><Enter><Enter><++><Esc>03kf<i
+	autocmd FileType html inoremap <leader>li <Esc>o<li></li><Esc>F>a
+	autocmd FileType html inoremap <leader>ol <ol><Enter><li></li><Enter></ol><Enter><Enter><++><Esc>03kf<i
+	autocmd FileType html inoremap <leader>img <img src="" alt="<++>"><++><esc>Fcf"a
+	autocmd FileType html inoremap <leader>td <td></td><++><Esc>Fdcit
+	autocmd FileType html inoremap <leader>tr <tr></tr><Enter><++><Esc>kf<i
+	autocmd FileType html inoremap <leader>th <th></th><++><Esc>Fhcit
+	autocmd FileType html inoremap <leader>tab <table><Enter></table><Esc>O
+	autocmd FileType html inoremap <leader>st <link rel="styesheet" href="" /><Esc>F"i
+	autocmd FileType html inoremap <leader>sc <script src=""></script><Esc>F"i
 
 "  ____  
 " |  _ \ 
