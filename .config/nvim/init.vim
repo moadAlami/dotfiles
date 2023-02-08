@@ -4,7 +4,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'deoplete-plugins/deoplete-jedi'
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 	Plug 'dense-analysis/ale'
-	Plug 'terryma/vim-multiple-cursors'
+	Plug 'mg979/vim-visual-multi'
 	Plug 'scrooloose/nerdtree'
 	Plug 'itchyny/lightline.vim'
 	Plug 'tpope/vim-surround'
@@ -161,7 +161,7 @@ highlight Visual cterm=reverse ctermbg=NONE
 	autocmd FileType tex inoremap ,qs1 \section*{}<Esc>i
 	autocmd FileType tex inoremap ,qs2 \subsection*{}<Esc>i
 	autocmd FileType tex inoremap ,qs3 \subsubsection*{}<Esc>i
-	autocmd FileType tex inoremap ,beg \begin{DELRN}<Enter><++><Enter>\end{DELRN}<Esc>2k0fR:MultipleCursorsFind<Space>DELRN<Enter>c
+	autocmd FileType tex inoremap ,beg \begin{ENV}<Enter><++><Enter>\end{ENV}<Esc>2k0f{l
 	autocmd FileType tex inoremap ,use \usepackage{}<Esc>0f{a
 	autocmd FileType tex inoremap ,buse \usepackage[]{<++>}<Esc>0f[a
 	autocmd FileType tex inoremap ,wr \begin{wrapfigure}{}{0cm}<Enter>\includegraphics[<++>]{<++>}<Enter>\end{wrapfigure}<Esc>2kf{a
