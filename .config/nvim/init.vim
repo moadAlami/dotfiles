@@ -1,3 +1,8 @@
+set background = "dark"
+let g:airline_theme = 'one'
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
+
 let mapleader=','
 call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
