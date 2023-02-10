@@ -1,7 +1,7 @@
-set background = "dark"
-let g:airline_theme = 'one'
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme slate
 set termguicolors
+highlight Normal guibg=none
+highlight NonText guibg=none
 
 let mapleader=','
 call plug#begin('~/.local/share/nvim/plugged')
@@ -20,10 +20,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'vimwiki/vimwiki'
 call plug#end()
 
+
 " Prevent clipboard hijacking
 	inoremap  <C-r>+  <C-r><C-r>+
 	inoremap  <C-r>*  <C-r><C-r>*
-
 
 " Markdownn viewer
 let g:mkdp_auto_start = 0
