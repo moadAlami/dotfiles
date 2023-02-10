@@ -2,6 +2,7 @@ colorscheme slate
 set termguicolors
 highlight Normal guibg=none
 highlight NonText guibg=none
+hi LineNr guibg=none guifg=orange
 
 let mapleader=','
 call plug#begin('~/.local/share/nvim/plugged')
