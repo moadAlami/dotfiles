@@ -121,6 +121,11 @@ highlight Visual cterm=reverse ctermbg=NONE
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
+
+" Fold and save folds locally
+	autocmd VimEnter * if filereadable(expand("%:p:h")."/".expand("%:t").".fold") | silent! :loadview | else | echo "No fold information found for this file." | endif
+	autocmd VimLeave * execute ":mkview!" expand("%:p:h")."/".expand("%:t").".fold"
+
 " Compile document and run biber
 	autocmd FileType tex map <leader>c :w! \| !pdflatex <c-r>%<CR><CR>:!biber %:r <c-r><CR><CR>:!pdflatex <c-r>%<CR>
 " Compile document and run makeglossaries
