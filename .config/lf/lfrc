@@ -4,7 +4,7 @@ set drawbox
 set shellopts '-eu'
 set icons
 set scrolloff 10
-set hiddenfiles ".*:*.aux:*.bbl:*.bcf:*.blg:*.run.xml:*.cpg:*.dbf:*.prj:*.shx:*.qmd"
+set hiddenfiles ".*:*.aux:*.bbl:*.bcf:*.blg:*.run.xml:*.fold:*.cpg:*.dbf:*.prj:*.shx:*.qmd"
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
 
@@ -17,6 +17,7 @@ cmd open ${{
 		application/msword) setsid -f lowriter "$f" &> /dev/null ;;
 		application/vnd.oasis.opendocument.text) setsid -f lowriter "$f" &> /dev/null ;;
 		application/*spreadsheet*) setsid -f localc "$f" ;;
+		application/*excel*) setsid -f localc "$f" ;;
 		application/pdf) setsid -f zathura "$f" &> /dev/null ;;
 		audio/*) mpv --audio-display=no "$f" ;;
 		video/*) setsid -f mpv "$f" -quiet &> /dev/null ;;
@@ -113,7 +114,8 @@ map gM cd ~/data/Music
 map gs cd ~/.local/bin
 map gt cd ~/external/torrents
 map gp cd ~/SSD/College/PhD
-map gl cd ~/SSD/PoleDigital/
+map gT cd ~/SSD/College/PhD/thesis
+map gl cd ~/SSD/PoleDigital/projects
 map gP cd ~/external
 map gr cd ~/github
 map gR cd ~/SSD/College/PhD/ref
