@@ -27,7 +27,6 @@ alias vim="nvim" \
 	gp="cd $HOME/SSD/College/PhD/" \
 	gP="cd $HOME/external" \
 	gm="cd $HOME/SSD/College/M.Sc" \
-	gM="cd $HOME/data/Music" \
 	gh="cd $HOME/" \
 	gt="cd $HOME/external/torrents" \
 	gT="cd $HOME/SSD/College/PhD/thesis" \
