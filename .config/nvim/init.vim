@@ -9,15 +9,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'deoplete-plugins/deoplete-jedi'
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-	Plug 'dense-analysis/ale'
 	Plug 'mg979/vim-visual-multi'
 	Plug 'scrooloose/nerdtree'
 	Plug 'itchyny/lightline.vim'
 	Plug 'tpope/vim-surround'
-	Plug 'jalvesaq/Nvim-R'
 	Plug 'tommcdo/vim-lion'
 	Plug 'tpope/vim-commentary'
-	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -56,8 +53,8 @@ set sw=4
 	set path+=**
 
 " Spell check
-	map <F6> :setlocal spell! spelllang=fr_fr<CR>
-	map <F8> :setlocal spell! spelllang=en_us<CR>
+	map <F6> :setlocal spell! spelllang=fr<CR>
+	map <F8> :setlocal spell! spelllang=en_gb<CR>
 
 " copy/cut and past from/to system clipboard
 	xnoremap <c-c> "+y
