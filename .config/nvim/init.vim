@@ -4,6 +4,9 @@ highlight Normal guibg=none
 highlight NonText guibg=none
 hi LineNr guibg=none guifg=orange
 
+" disable mouse
+	set mouse = 
+
 let mapleader=','
 call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -17,7 +20,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'tpope/vim-commentary'
 	Plug 'vimwiki/vimwiki'
 call plug#end()
-
 
 " Prevent clipboard hijacking
 	inoremap  <C-r>+  <C-r><C-r>+
@@ -60,7 +62,6 @@ set sw=4
 	xnoremap <c-c> "+y
 	xnoremap <c-d> "+d
 	nnoremap cp "+p
-
 
 " correct spelling mistakes 
 	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
