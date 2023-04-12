@@ -1,14 +1,9 @@
-colorscheme slate
+" colorscheme slate
 set termguicolors
-highlight Normal guibg=none
-highlight NonText guibg=none
-hi LineNr guibg=none guifg=orange
-
-" disable mouse
-	set mouse = 
 
 let mapleader=','
 call plug#begin('~/.local/share/nvim/plugged')
+	Plug 'dracula/vim', { 'as': 'dracula' }
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'deoplete-plugins/deoplete-jedi'
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
@@ -20,6 +15,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'tpope/vim-commentary'
 	Plug 'vimwiki/vimwiki'
 call plug#end()
+
+colorscheme dracula
+hi LineNr guibg=none guifg=orange
 
 " Prevent clipboard hijacking
 	inoremap  <C-r>+  <C-r><C-r>+
@@ -62,6 +60,7 @@ set sw=4
 	xnoremap <c-c> "+y
 	xnoremap <c-d> "+d
 	nnoremap cp "+p
+
 
 " correct spelling mistakes 
 	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
@@ -110,90 +109,90 @@ set sw=4
 set t_Co=256
 highlight Visual cterm=reverse ctermbg=NONE
 
-"  _         _____   __  __
-" | |    __ |_   _|__\ \/ /
-" | |   / _` || |/ _ \\  / 
-" | |__| (_| || |  __//  \ 
-" |_____\__,_||_|\___/_/\_\
+" "  _         _____   __  __
+" " | |    __ |_   _|__\ \/ /
+" " | |   / _` || |/ _ \\  / 
+" " | |__| (_| || |  __//  \ 
+" " |_____\__,_||_|\___/_/\_\
                          
 
-" Runs a script that cleans out tex build files whenever I close out of a .tex file.
-	autocmd VimLeave *.tex !texclear %
+" " Runs a script that cleans out tex build files whenever I close out of a .tex file.
+" 	autocmd VimLeave *.tex !texclear %
 
-" Fold and save folds locally
-	autocmd VimEnter *.tex silent! execute "source " . expand("%:p:h") . "/" . expand("%:t") . ".fold"
-	autocmd VimLeave *.tex execute ":mksession! " . expand("%:p:h") . "/" . expand("%:t") . ".fold"
+" " Fold and save folds locally
+" 	autocmd VimEnter *.tex silent! execute "source " . expand("%:p:h") . "/" . expand("%:t") . ".fold"
+" 	autocmd VimLeave *.tex execute ":mksession! " . expand("%:p:h") . "/" . expand("%:t") . ".fold"
 
-" Compile document and run biber
-	autocmd FileType tex map <leader>c :w! \| !pdflatex <c-r>%<CR><CR>:!biber %:r <c-r><CR><CR>:!pdflatex <c-r>%<CR>
-" Compile document and run makeglossaries
-	autocmd FileType tex map <leader>g :w! \| !pdflatex <c-r>%<CR><CR>:!makeglossaries %:r <c-r><CR><CR>:!pdflatex <c-r>%<CR>
-" makeglossaries
-	autocmd FileType tex map <leader>mgl :!makeglossaries %:r <c-r><CR><CR>
-" Biber
-	autocmd FileType tex map <leader>bib :!biber %:r <c-r><CR><CR>
-" BibTex
-	autocmd FileType tex map <leader>bt :!bibtex %:t:r <c-r><CR><CR>
-" Build only
-	" autocmd FileType tex map <leader>bui :w! \| !lualatex <c-r>%<CR>
-	autocmd FileType tex map <leader>bui :w! \| !pdflatex <c-r>%<CR>
-" Compile document and run bibtex
-	autocmd FileType tex map <leader>c :w! \| !pdflatex <c-r>%<CR><CR>:!bibtex %:t:r <c-r><CR><CR>:!pdflatex <c-r>%<CR>:!pdflatex <c-r>%<CR>
+" " Compile document and run biber
+" 	autocmd FileType tex map <leader>c :w! \| !pdflatex <c-r>%<CR><CR>:!biber %:r <c-r><CR><CR>:!pdflatex <c-r>%<CR>
+" " Compile document and run makeglossaries
+" 	autocmd FileType tex map <leader>g :w! \| !pdflatex <c-r>%<CR><CR>:!makeglossaries %:r <c-r><CR><CR>:!pdflatex <c-r>%<CR>
+" " makeglossaries
+" 	autocmd FileType tex map <leader>mgl :!makeglossaries %:r <c-r><CR><CR>
+" " Biber
+" 	autocmd FileType tex map <leader>bib :!biber %:r <c-r><CR><CR>
+" " BibTex
+" 	autocmd FileType tex map <leader>bt :!bibtex %:t:r <c-r><CR><CR>
+" " Build only
+" 	" autocmd FileType tex map <leader>bui :w! \| !lualatex <c-r>%<CR>
+" 	autocmd FileType tex map <leader>bui :w! \| !pdflatex <c-r>%<CR>
+" " Compile document and run bibtex
+" 	autocmd FileType tex map <leader>c :w! \| !pdflatex <c-r>%<CR><CR>:!bibtex %:t:r <c-r><CR><CR>:!pdflatex <c-r>%<CR>:!pdflatex <c-r>%<CR>
 
-" Open the compiled .pdf
-	autocmd FileType tex map <leader>o :!zathura <c-r>%<Backspace><Backspace><Backspace>pdf & <CR><CR>
+" " Open the compiled .pdf
+" 	autocmd FileType tex map <leader>o :!zathura <c-r>%<Backspace><Backspace><Backspace>pdf & <CR><CR>
 
-" Textidote
-	autocmd FileType tex map ,tf :!textidote --check fr --output html % > report.html; firefox report.html <c-r><CR><CR>
-	autocmd FileType tex map ,te :!textidote --check en --output  html % > report.html; firefox report.html <c-r><CR><CR>
+" " Textidote
+" 	autocmd FileType tex map ,tf :!textidote --check fr --output html % > report.html; firefox report.html <c-r><CR><CR>
+" 	autocmd FileType tex map ,te :!textidote --check en --output  html % > report.html; firefox report.html <c-r><CR><CR>
 	
 
-" Command Shortcuts
-	autocmd FileType tex inoremap ,it \textit{}<++><Esc>T{i
-	autocmd FileType tex inoremap ,tt \texttt{}<++><Esc>T{i
-	autocmd FileType tex inoremap ,sc \textsc{}<++><Esc>T{i
-	autocmd FileType tex inoremap ,bf \textbf{}<Esc>T{i
-	autocmd FileType tex inoremap ,under \underline{}<++><Esc>T{i
-	autocmd FileType tex inoremap ,em \emph{}<Esc>i
-	autocmd FileType tex inoremap ,hb \hbar<Esc>i
-	autocmd FileType tex inoremap ,hl \hline<Esc>o
-	autocmd FileType tex inoremap ,ol \begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><Enter><++><Esc>3kA\item<Space> 
-	autocmd FileType tex inoremap ,ul \begin{itemize}<Enter><Enter>\end{itemize}<Enter><Enter><++><Esc>3kA\item<Space> 
-	autocmd FileType tex inoremap ,li <Enter>\item<Space>
-	autocmd FileType tex inoremap ,ref \ref{}<Space><++><Esc>T{i
-	autocmd FileType tex inoremap ,tab \begin{tabular}<Enter><++><Enter>\end{tabular}<Enter><Enter><++><Esc>4kA{}<Esc>i
-	autocmd FileType tex inoremap ,ch \chapter{}<Esc>i
-	autocmd FileType tex inoremap ,s1 \section{}<Esc>i
-	autocmd FileType tex inoremap ,s2 \subsection{}<Esc>i
-	autocmd FileType tex inoremap ,s3 \subsubsection{}<Esc>i
-	autocmd FileType tex inoremap ,qch \chapter*{}<Esc>i
-	autocmd FileType tex inoremap ,qs1 \section*{}<Esc>i
-	autocmd FileType tex inoremap ,qs2 \subsection*{}<Esc>i
-	autocmd FileType tex inoremap ,qs3 \subsubsection*{}<Esc>i
-	autocmd FileType tex inoremap ,beg \begin{ENV}<Enter><++><Enter>\end{ENV}<Esc>2k0f{l
-	autocmd FileType tex inoremap ,use \usepackage{}<Esc>0f{a
-	autocmd FileType tex inoremap ,buse \usepackage[]{<++>}<Esc>0f[a
-	autocmd FileType tex inoremap ,wr \begin{wrapfigure}{}{0cm}<Enter>\includegraphics[<++>]{<++>}<Enter>\end{wrapfigure}<Esc>2kf{a
-	autocmd FileType tex inoremap ,inc \includegraphics[]{<++>}<Esc>F[a
-	autocmd FileType tex inoremap ,vs \vspace{}<Esc>i
-	autocmd FileType tex inoremap ,hs \hspace{}<Esc>i
-	autocmd FileType tex inoremap ,ci ~\cite{}<Esc>i
-	autocmd FileType tex inoremap ,pci \parencite{}<Esc>i
-	autocmd FileType tex inoremap ,tci \textcite{}<Esc>i
-	autocmd FileType tex inoremap ,ct  \captionof{table}{}<Esc>i
-	autocmd FileType tex inoremap ,cf  \captionof{figure}{}<Esc>i
+" " Command Shortcuts
+" 	autocmd FileType tex inoremap ,it \textit{}<++><Esc>T{i
+" 	autocmd FileType tex inoremap ,tt \texttt{}<++><Esc>T{i
+" 	autocmd FileType tex inoremap ,sc \textsc{}<++><Esc>T{i
+" 	autocmd FileType tex inoremap ,bf \textbf{}<Esc>T{i
+" 	autocmd FileType tex inoremap ,under \underline{}<++><Esc>T{i
+" 	autocmd FileType tex inoremap ,em \emph{}<Esc>i
+" 	autocmd FileType tex inoremap ,hb \hbar<Esc>i
+" 	autocmd FileType tex inoremap ,hl \hline<Esc>o
+" 	autocmd FileType tex inoremap ,ol \begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><Enter><++><Esc>3kA\item<Space> 
+" 	autocmd FileType tex inoremap ,ul \begin{itemize}<Enter><Enter>\end{itemize}<Enter><Enter><++><Esc>3kA\item<Space> 
+" 	autocmd FileType tex inoremap ,li <Enter>\item<Space>
+" 	autocmd FileType tex inoremap ,ref \ref{}<Space><++><Esc>T{i
+" 	autocmd FileType tex inoremap ,tab \begin{tabular}<Enter><++><Enter>\end{tabular}<Enter><Enter><++><Esc>4kA{}<Esc>i
+" 	autocmd FileType tex inoremap ,ch \chapter{}<Esc>i
+" 	autocmd FileType tex inoremap ,s1 \section{}<Esc>i
+" 	autocmd FileType tex inoremap ,s2 \subsection{}<Esc>i
+" 	autocmd FileType tex inoremap ,s3 \subsubsection{}<Esc>i
+" 	autocmd FileType tex inoremap ,qch \chapter*{}<Esc>i
+" 	autocmd FileType tex inoremap ,qs1 \section*{}<Esc>i
+" 	autocmd FileType tex inoremap ,qs2 \subsection*{}<Esc>i
+" 	autocmd FileType tex inoremap ,qs3 \subsubsection*{}<Esc>i
+" 	autocmd FileType tex inoremap ,beg \begin{ENV}<Enter><++><Enter>\end{ENV}<Esc>2k0f{l
+" 	autocmd FileType tex inoremap ,use \usepackage{}<Esc>0f{a
+" 	autocmd FileType tex inoremap ,buse \usepackage[]{<++>}<Esc>0f[a
+" 	autocmd FileType tex inoremap ,wr \begin{wrapfigure}{}{0cm}<Enter>\includegraphics[<++>]{<++>}<Enter>\end{wrapfigure}<Esc>2kf{a
+" 	autocmd FileType tex inoremap ,inc \includegraphics[]{<++>}<Esc>F[a
+" 	autocmd FileType tex inoremap ,vs \vspace{}<Esc>i
+" 	autocmd FileType tex inoremap ,hs \hspace{}<Esc>i
+" 	autocmd FileType tex inoremap ,ci ~\cite{}<Esc>i
+" 	autocmd FileType tex inoremap ,pci \parencite{}<Esc>i
+" 	autocmd FileType tex inoremap ,tci \textcite{}<Esc>i
+" 	autocmd FileType tex inoremap ,ct  \captionof{table}{}<Esc>i
+" 	autocmd FileType tex inoremap ,cf  \captionof{figure}{}<Esc>i
 	
-"  ____  _ _   _____   __  __
-" | __ )(_) |_|_   _|__\ \/ /
-" |  _ \| | '_ \| |/ _ \\  / 
-" | |_) | | |_) | |  __//  \ 
-" |____/|_|_.__/|_|\___/_/\_\
+" "  ____  _ _   _____   __  __
+" " | __ )(_) |_|_   _|__\ \/ /
+" " |  _ \| | '_ \| |/ _ \\  / 
+" " | |_) | | |_) | |  __//  \ 
+" " |____/|_|_.__/|_|\___/_/\_\
 
-	autocmd FileType bib inoremap <leader>ar @article{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>journal = "<++>",<Enter>volume = "<++>",<Enter>pages = "<++>",<Enter>year = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>09k0f{a
-   	autocmd FileType bib inoremap <leader>bo @book{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>year = "<++>",<Enter>publisher = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>07k0f{a
-   	autocmd FileType bib inoremap <leader>mi @misc{,<Esc>ohowpublished = "\url{<++>}",<Enter>author = "<++>",<Enter>title = "<++>",<Enter>month = "<++>",<Enter>year = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>08k0f{a                             
-   	autocmd FileType bib inoremap <leader>re @techreport{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>year = "<++>",<Enter>institution = "<++>",<Enter>type = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>08kf{a                                 
-	autocmd FileType bib inoremap <leader>ph @phdthesis{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>year = "<++>",<Enter>school = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>07kf{a
+" 	autocmd FileType bib inoremap <leader>ar @article{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>journal = "<++>",<Enter>volume = "<++>",<Enter>pages = "<++>",<Enter>year = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>09k0f{a
+"    	autocmd FileType bib inoremap <leader>bo @book{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>year = "<++>",<Enter>publisher = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>07k0f{a
+"    	autocmd FileType bib inoremap <leader>mi @misc{,<Esc>ohowpublished = "\url{<++>}",<Enter>author = "<++>",<Enter>title = "<++>",<Enter>month = "<++>",<Enter>year = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>08k0f{a                             
+"    	autocmd FileType bib inoremap <leader>re @techreport{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>year = "<++>",<Enter>institution = "<++>",<Enter>type = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>08kf{a                                 
+" 	autocmd FileType bib inoremap <leader>ph @phdthesis{,<Esc>oauthor = "<++>",<Enter>title = "<++>",<Enter>year = "<++>",<Enter>school = "<++>"<Enter>}<Enter><Enter><backspace><++><Esc>07kf{a
 
 
 "  _   _ _____ __  __ _
