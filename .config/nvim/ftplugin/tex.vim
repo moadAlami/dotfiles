@@ -27,6 +27,6 @@ endfunction
 nnoremap <silent> <leader>q :call ToggleQuickFix()<LF>
 nnoremap <silent> <TAB> :cnext<LF>
 nnoremap <silent> <S-TAB> :cprevious<LF>
-nnoremap <buffer> <leader>c :call Compile()<cr><cr>:call Openpdf()<lf>:echo "done"<LF>
+nnoremap <buffer> <leader>c :call Compile()<LF><c-w>k:call Openpdf()<lf>:echo "done"<LF>
 nnoremap <buffer> <leader>o :call Openpdf()<LF>
 nnoremap <buffer> <leader>s :so /home/mouad/.config/nvim/ftplugin/tex.vim<LF>
