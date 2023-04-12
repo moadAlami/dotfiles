@@ -3,41 +3,41 @@ set termguicolors
 
 let mapleader=','
 call plug#begin('~/.local/share/nvim/plugged')
-	Plug 'dracula/vim', { 'as': 'dracula' }
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	Plug 'deoplete-plugins/deoplete-jedi'
-	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-	Plug 'mg979/vim-visual-multi'
-	Plug 'scrooloose/nerdtree'
-	Plug 'itchyny/lightline.vim'
-	Plug 'tpope/vim-surround'
-	Plug 'tommcdo/vim-lion'
-	Plug 'tpope/vim-commentary'
-	Plug 'vimwiki/vimwiki'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'mg979/vim-visual-multi'
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-surround'
+Plug 'tommcdo/vim-lion'
+Plug 'tpope/vim-commentary'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 colorscheme dracula
 hi LineNr guibg=none guifg=orange
 
 " Prevent clipboard hijacking
-	inoremap  <C-r>+  <C-r><C-r>+
-	inoremap  <C-r>*  <C-r><C-r>*
+inoremap  <C-r>+  <C-r><C-r>+
+inoremap  <C-r>*  <C-r><C-r>*
 
 " Markdownn viewer
 let g:mkdp_auto_start = 0
 
 " Alignment aesthetics
-	let b:lion_squeeze_spaces = 1
+let b:lion_squeeze_spaces = 1
 
 set formatoptions=1
 set lbr
 
 " align with gl<character>
-	let g:lion_squeeze_spaces = 1
+let g:lion_squeeze_spaces = 1
 
 " languagetool
-	map ,lf :!languagetool -l fr %<CR>
-	map ,le :!languagetool -l en %<CR>
+map ,lf :!languagetool -l fr %<CR>
+map ,le :!languagetool -l en %<CR>
 
 syntax enable
 filetype plugin on
@@ -50,51 +50,51 @@ set nopaste
 set sw=4
 
 " Finding files
-	set path+=**
+set path+=**
 
 " Spell check
-	map <F6> :setlocal spell! spelllang=fr<CR>
-	map <F8> :setlocal spell! spelllang=en_gb<CR>
+map <F6> :setlocal spell! spelllang=fr<CR>
+map <F8> :setlocal spell! spelllang=en_gb<CR>
 
 " copy/cut and past from/to system clipboard
-	xnoremap <c-c> "+y
-	xnoremap <c-d> "+d
-	nnoremap cp "+p
+xnoremap <c-c> "+y
+xnoremap <c-d> "+d
+nnoremap cp "+p
 
 
 " correct spelling mistakes 
-	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "Disables automatic commenting on newline:
-	autocmd FileType * set formatoptions-=cro
+autocmd FileType * set formatoptions-=cro
 
 "Enable autocompletion:
-	set wildmode=longest,list,full
-	set wildmenu
+set wildmode=longest,list,full
+set wildmenu
 
 " Execute python scripts
-	map <F9> :exec 'w !python' <cr>
+map <F9> :exec 'w !python' <cr>
 
 " run the selected python lines (outputs in the same buffer)
-	map <C-space> :!python <cr>
+map <C-space> :!python <cr>
 
 " Tabs
-	nnoremap <C-t> :tabnew <cr>
-	" nnoremap <C-x> :tabclose <cr>
-	nnoremap <C-p> :tabprevious <cr>
+nnoremap <C-t> :tabnew <cr>
+" nnoremap <C-x> :tabclose <cr>
+nnoremap <C-p> :tabprevious <cr>
 
 " Mode Coloring (using the (lightline) Plugin
-	set laststatus=2
+set laststatus=2
 
 " NERDTreeToggle
-	map <C-o> :NERDTreeToggle<CR>
+map <C-o> :NERDTreeToggle<CR>
 
 " Use deoplete
-	let g:deoplete#enable_at_startup = 1
-	inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-	inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
-	autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
+autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
 	autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
 " Split line (opposite of 'join' <shift>j)
@@ -102,9 +102,9 @@ set sw=4
 
 
 " <++> Navigation
-	inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
-	vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
-	map <leader><leader> <Esc>/<++><Enter>"_c4l
+	" inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+	" vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+	" map <leader><leader> <Esc>/<++><Enter>"_c4l
 
 set t_Co=256
 highlight Visual cterm=reverse ctermbg=NONE
@@ -244,4 +244,4 @@ highlight Visual cterm=reverse ctermbg=NONE
 	autocmd BufWritePost ~/github/dwm/config.h !cd ~/github/dwm/; sudo make install && { killall -q dwm;setsid dwm & }
 	autocmd BufWritePost ~/github/st/config.h !cd ~/github/st/; sudo make install;
 	autocmd BufWritePost ~/github/surf/config.h !cd ~/github/surf/; sudo make install;
-	autocmd BufWritePost ~/github/tabbed/config.h !cd ~/github/tabbed/; sudo make instal;
+	autocmd BufWritePost ~/github/tabbed/config.h !cd ~/github/tabbed/; sudo make install;
