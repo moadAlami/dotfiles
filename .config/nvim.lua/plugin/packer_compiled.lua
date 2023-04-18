@@ -154,6 +154,16 @@ _G.packer_plugins = {
     path = "/home/mouad/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-angry-reviewer"] = {
+    loaded = true,
+    path = "/home/mouad/.local/share/nvim/site/pack/packer/start/vim-angry-reviewer",
+    url = "https://github.com/anufrievroman/vim-angry-reviewer"
+  },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/home/mouad/.local/share/nvim/site/pack/packer/start/vim-commentary",
+    url = "https://github.com/tpope/vim-commentary"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/mouad/.local/share/nvim/site/pack/packer/start/vim-fugitive",
