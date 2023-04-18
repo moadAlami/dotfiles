@@ -1,3 +1,6 @@
+vim.cmd('filetype plugin on')
+vim.cmd('autocmd FileType * set formatoptions-=cro')
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -21,3 +24,6 @@ vim.opt.incsearch = true
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "100"
+
+
+vim.g.AngryReviewerEnglish = 'british'
