@@ -23,7 +23,7 @@ vim.opt.incsearch = true
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "100"
+-- vim.opt.colorcolumn = "100"
 
 
 vim.g.AngryReviewerEnglish = 'british'

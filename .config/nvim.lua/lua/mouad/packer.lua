@@ -39,11 +39,14 @@ return require('packer').startup(function(use)
 
 use('anufrievroman/vim-angry-reviewer')
 use('tpope/vim-commentary')
+use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+}
 
 -- colorschemes
 use { "catppuccin/nvim", as = "catppuccin" }
 use { "rose-pine/neovim", as = "rose-pine" }
-use('Mofiqul/dracula.nvim')
 
 use {
     'nvim-treesitter/nvim-treesitter',
