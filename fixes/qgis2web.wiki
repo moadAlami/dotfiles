@@ -1,2 +1,0 @@
-- PyQt5.WebKitWidgets got deprecated
-- Use python-pyqt5 5.15.7-2
