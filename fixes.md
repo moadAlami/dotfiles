@@ -37,3 +37,6 @@ sudo pacman -Rnu xdg-desktop-portal-gnome
 ## qgi2web QGIS plugin
 PyQt5.WebKitWidgets is deprecated. Should use python-pyqt5 5.15.7-2.
 (Breaks python support for QGIS. Can't load SIP).
+
+## mount /mount/point unknown filesystem type 'exfat'
+`sudo pacman -S exfat-utils`
